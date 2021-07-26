@@ -21,7 +21,7 @@ export class EmployeeInfoComponent implements OnInit {
       (response: Employee) => {
         console.log(response);
       }, (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert(error);
       }
     )
   }
