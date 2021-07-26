@@ -1,0 +1,64 @@
+
+<div class="container"  style="margin-top: 2rem;">
+
+
+  
+  <form [hidden]="submitted" [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+    <!-- Name -->
+    <div style="margin-top: 8px;" (keyup)="inputOnChange(ref1,ref2,ref3,ref4,'name')" class="form-group">
+      <label #ref1 for="name">Employee's name:</label>
+      
+      <input #ref2 type="text" class="form-control" placeholder="Enter name" formControlName="name">
+      <small #ref3>Your name length should be between 4 and 20 characters</small>
+      <small #ref4>Please enter a name</small>
+    </div>
+    <!-- Email address -->
+    <div (keyup)="inputOnChange(ref5,ref6,ref7,ref8,'email')" style="margin-top: 8px;" class="form-group">
+      <label #ref5 for="email">Email address:</label>
+      <input #ref6 type="email" class="form-control" placeholder="Enter email" formControlName="email">
+      <small #ref7>Please enter a valid email</small>
+      <small #ref8>Please enter an email</small>
+    </div>
+    <!-- Job title -->
+    <div (keyup)="inputOnChange(ref8,ref9,ref10,ref11,'jobTitle')" style="margin-top: 8px;" class="form-group">
+      <label #ref8 for="jobTitle">Job Title:</label>
+      <input #ref9 type="text" class="form-control"placeholder="Enter job title" formControlName="jobTitle">
+      <small #ref10>Please enter a job title</small>
+      <small #ref11>Please enter a job</small>
+    </div>
+    <!-- Phone number -->
+    <div (keyup)="inputOnChange(ref12,ref13,ref14,ref15,'phone')" style="margin-top: 8px;" class="form-group">
+      <label #ref12 for="phone">Phone number:</label>
+      <input #ref13 type="tel" class="form-control" placeholder="Enter phone number" formControlName="phone">
+      <small #ref14>Please enter a valid phone number</small>
+      <small #ref15>Please enter a phone number</small>
+    </div>
+    <!-- confirm check -->
+    <div style="margin-top: 8px;" class="form-check">
+      <input type="checkbox" class="form-check-input" formControlName="conf">
+      <label for="confirm">Are you sure?</label>
+    </div>
+    <!-- submittion -->
+    <div *ngIf="!edit; else edit">
+    <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <ng-template #edit>
+      <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Edit</button>
+      <button  style="margin-top: 9px;margin-left: 8px;" routerLink="/employee" class="btn btn-danger">Cancel</button>
+    </ng-template>
+  </form>
+
+</div>
+
+<div *ngIf="submitted" class="card" style="width: 98%;">
+  <div class="card-body">
+    <h1 class="card-title" style="text-align: center;">Success!</h1>
+    <hr>
+    <p *ngIf="!edit ; else notEdit" class="card-text" style="text-align: center;">A new employee has been added to the employees list!</p>
+    <ng-template #notEdit>
+      <p class="card-text" style="text-align: center;">You have successfully edited this employee's information!</p>
+      
+    </ng-template>
+    <button routerLink="/employee" id="goSomewhere" href="#" class="btn btn-success">Redirect to employees page</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<form 
+  
+       
+  class="d-flex">
+        
+      <input 
+      #box
+      (keyup)="onSearchType(box.value)"
+      (search)="clear()"
+      class="form-control me-2"
+      type="search" placeholder="Search" aria-label="Search">
+      
+</form>

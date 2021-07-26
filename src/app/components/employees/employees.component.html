@@ -1,0 +1,30 @@
+<div class="container">
+
+    <div class="row" *ngIf="employees?.length != 0; else elseBlock">
+        <div *ngFor="let employee of employees" class="col-sm-3">
+
+            <div class="card" style="width: 16rem;margin-top: 1rem;">
+            <!--  <img src="..." class="card-img-top" alt="..."> --> 
+                <div class="card-body">
+                    <h5 class="card-title">{{ employee?.name }}</h5>
+                    <hr>
+                    Email: <br><small class="text-muted">{{ employee?.email }}</small> <br>
+                    Job: <small class="text-muted">{{ employee?.jobTitle }}</small> <br>
+                    Phone: <small class="text-muted">{{ employee?.phone }}</small> <br>
+                    <hr>
+                    <a (click)="onDelete(employee)" class="btn btn-danger" style="float: right;">Delete</a>
+                    <a routerLink="/employee/update/{{employee?.id}}" class="btn btn-success" style="float: right; margin-right: 4px;">Edit</a>
+                    <a routerLink="/employee/find/{{employee?.id}}" class="btn btn-dark" style="float: left; ">Info</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <ng-template #elseBlock >
+        <div class="alert alert-warning" role="alert" style="margin-top: 1rem;">
+           No Employees Found!
+        </div>
+    </ng-template>
+   
+</div>
+
