@@ -13,13 +13,13 @@ export class EmployeeInfoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private service: EmployeeService) { }
 
-
+  employee!: Employee;
 
   ngOnInit(): void {
     let id: number = this.route.snapshot.params["id"];
     this.service.findEmployee(id).subscribe(
       (response: Employee) => {
-        console.log(response);
+        this.employee = response;
       }, (error: HttpErrorResponse) => {
         alert(error);
       }
