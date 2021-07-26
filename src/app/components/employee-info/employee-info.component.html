@@ -1,1 +1,17 @@
-<p>employee-info works!</p>
+<div  style="margin-top: 16px;"  class="container">
+    <div class="card">
+    
+        <div class="card-body">
+            <h5 style="text-align: center;font-size: xx-large;" class="card-title">{{employee?.name}}</h5>
+            <hr>
+            Contact Mr. {{employee?.name}}: <h2>{{employee?.email}}</h2>  
+            <hr>
+            He works as a <h2>{{employee?.jobTitle}}</h2> developer.
+            <hr>
+            His phone number is: <h2>{{employee?.phone}}</h2>
+            
+    
+        </div>
+    </div>
+    <button routerLink="/employee" style="margin-top:8px;" class="btn btn-dark">Go back</button>
+</div>
