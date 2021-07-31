@@ -11,6 +11,6 @@ import { EmployeeService } from './services/employee.service';
 })
 export class AppComponent {
 
-  title = "test"
+  title = "employeeamangerapp"
 
 }
