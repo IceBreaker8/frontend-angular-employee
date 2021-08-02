@@ -18,7 +18,7 @@ jobs:
     docker:
       - image: cimg/node:15.1
         environment: 
-          -CHROME_BIN: /usr/bin/google-chrome
+          CHROME_BIN: /usr/bin/google-chrome
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
