@@ -13,7 +13,7 @@ export class EmployeesComponent implements OnInit {
 
   employees!: Employee[];
 
-  //cmd
+  //cmds
 
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute) { }
