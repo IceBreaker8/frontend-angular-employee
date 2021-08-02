@@ -13,7 +13,7 @@ export class EmployeesComponent implements OnInit {
 
   employees!: Employee[];
 
-  //CI JENKINS TEST
+
 
   constructor(private employeeService: EmployeeService,
     private route: ActivatedRoute) { }
