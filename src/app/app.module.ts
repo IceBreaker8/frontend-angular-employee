@@ -11,9 +11,9 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { JobNavigatorComponent } from './components/job-navigator/job-navigator.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
-import { LoginComponent } from './components/login/login.component';
+
 
 
 
@@ -24,7 +24,6 @@ const routes: Routes = [
   { path: 'employee/find/:id', component: EmployeeInfoComponent },
   { path: 'employee/add', component: EmployeeFormComponent },
   { path: 'employee', component: EmployeesComponent },
-  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: "employee", pathMatch: "full" }
 ];
 
@@ -35,8 +34,7 @@ const routes: Routes = [
     EmployeeFormComponent,
     JobNavigatorComponent,
     SearchBarComponent,
-    EmployeeInfoComponent,
-    LoginComponent,
+    EmployeeInfoComponent
   ],
   imports: [
 
@@ -45,8 +43,7 @@ const routes: Routes = [
     ),
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    FormBuilder
+    ReactiveFormsModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

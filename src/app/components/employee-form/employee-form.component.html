@@ -39,10 +39,10 @@
       <label for="confirm">Are you sure?</label>
     </div>
     <!-- submittion -->
-    <div *ngIf="!edit; else edit">
+    <div *ngIf="!edit; else edits">
     <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <ng-template #edit>
+    <ng-template #edits>
       <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Edit</button>
       <button  style="margin-top: 9px;margin-left: 8px;" routerLink="/employee" class="btn btn-danger">Cancel</button>
     </ng-template>
