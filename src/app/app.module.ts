@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EmployeeService } from './services/employee.service';
 
 
+
 import { Routes, RouterModule } from '@angular/router';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
@@ -13,10 +14,11 @@ import { JobNavigatorComponent } from './components/job-navigator/job-navigator.
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
+import { LoginComponent } from './components/login/login.component';
+//aws
 
 
-
-
+// @TODO: MAKE SEARCH BAR UNFUNCTIONAL OUTSIDE OF EMPLOYEES COMPONENT
 const routes: Routes = [
   { path: 'employee/update/:id', component: EmployeeFormComponent },
   { path: "employee/search/:subsname", component: EmployeesComponent },
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'employee/find/:id', component: EmployeeInfoComponent },
   { path: 'employee/add', component: EmployeeFormComponent },
   { path: 'employee', component: EmployeesComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: "employee", pathMatch: "full" }
 ];
 
@@ -34,7 +37,8 @@ const routes: Routes = [
     EmployeeFormComponent,
     JobNavigatorComponent,
     SearchBarComponent,
-    EmployeeInfoComponent
+    EmployeeInfoComponent,
+    LoginComponent
   ],
   imports: [
 

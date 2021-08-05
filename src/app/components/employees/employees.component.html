@@ -1,4 +1,6 @@
-<div class="container">
+<app-job-navigator></app-job-navigator>
+
+<div class="container main">
 
     <div class="row" *ngIf="employees?.length != 0; else elseBlock">
         <div *ngFor="let employee of employees" class="col-sm-3">

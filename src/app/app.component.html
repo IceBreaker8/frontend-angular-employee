@@ -1,25 +1,28 @@
 
-
+<div class="container-fluid">
 <nav class="navbar navbar-light bg-light bg-gradient">
 
   <div class="container">
 <!---->
     
-    <button style="margin-left: 8rem;" class="btn btn-dark" routerLink="employee">
+    <button style="margin-left: 8%;" class="btn btn-dark" routerLink="employee">
       Employees   
     </button>
 
-    <button class="btn btn-primary me-1" routerLink="employee/add">
+    <button class="btn btn-primary me-1" routerLink="employee/add" style="margin-left: -50%;">
       Add Employee
+    </button>
+    <!-- Login component -->
+    <button routerLink="/login" class="btn btn-success" style="margin-right: -50%;">
+      Login
     </button>
    <app-search-bar></app-search-bar>
   </div>
 </nav>  
-
+</div>
 <!-- Job Navigator here -->
 
-
-<app-job-navigator></app-job-navigator>
+<router-outlet></router-outlet>
 
 
 

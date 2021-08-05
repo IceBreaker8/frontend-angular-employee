@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router"
+import { ActivatedRoute, Router } from "@angular/router"
 
 @Component({
   selector: 'app-search-bar',
@@ -10,7 +10,7 @@ export class SearchBarComponent implements OnInit {
 
   searchWord: string = "";
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private activeRouter: ActivatedRoute) {
 
 
   }
@@ -21,11 +21,19 @@ export class SearchBarComponent implements OnInit {
 
 
   public onSearchType(searchWord: string) {
-    this.route.navigate([`/employee/search/${searchWord}`]);
+    console.log(this.route.url);
+    if (this.route.url == "/employee" || this.route.url.includes("/employee/search/")
+      || this.route.url.includes("/employee/jobs/")) {
+      this.route.navigate([`/employee/search/${searchWord}`]);
+    }
+
 
   }
   public clear() {
-    this.route.navigate([`/employee`]);
+    if (this.route.url == "/employee" || this.route.url.includes("/employee/search/")
+      || this.route.url.includes("/employee/jobs/")) {
+      this.route.navigate([`/employee`]);
+    }
   }
 
 

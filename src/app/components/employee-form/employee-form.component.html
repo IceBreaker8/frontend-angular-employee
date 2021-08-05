@@ -1,5 +1,5 @@
 
-<div class="container"  style="margin-top: 2rem;">
+<div class="container">
 
 
   
@@ -49,16 +49,20 @@
   </form>
 
 </div>
+<div class="container" style="margin-top: 1%;">
 
 <div *ngIf="submitted" class="card" style="width: 98%;">
   <div class="card-body">
     <h1 class="card-title" style="text-align: center;">Success!</h1>
     <hr>
-    <p *ngIf="!edit ; else notEdit" class="card-text" style="text-align: center;">A new employee has been added to the employees list!</p>
+    <p *ngIf="!edit ; else notEdit" class="card-text" style="text-align: center;">
+      A new employee has been added to the employees list!
+    </p>
     <ng-template #notEdit>
       <p class="card-text" style="text-align: center;">You have successfully edited this employee's information!</p>
       
     </ng-template>
     <button routerLink="/employee" id="goSomewhere" href="#" class="btn btn-success">Redirect to employees page</button>
   </div>
+</div>
 </div>
