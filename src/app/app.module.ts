@@ -18,7 +18,6 @@ import { LoginComponent } from './components/login/login.component';
 //aws
 
 
-
 // @TODO: MAKE SEARCH BAR UNFUNCTIONAL OUTSIDE OF EMPLOYEES COMPONENT
 const routes: Routes = [
   { path: 'employee/update/:id', component: EmployeeFormComponent },
