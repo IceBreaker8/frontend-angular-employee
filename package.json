@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^12.1.0",
     "@angular/animations": "~12.1.1",
     "@angular/cdk": "^12.0.0",
     "@angular/common": "~12.1.1",
@@ -23,6 +24,7 @@
     "@nebular/eva-icons": "8.0.0",
     "@nebular/theme": "^8.0.0",
     "aws-amplify": "^4.2.2",
+    "aws-amplify-angular": "^6.0.8",
     "bootstrap": "^5.0.2",
     "eva-icons": "^1.1.2",
     "rxjs": "~6.6.0",
