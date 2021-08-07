@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid" style="margin-left: 12%;">
+    <button class="btn btn-dark" routerLink="employee">
+      Employees   
+    </button>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <!-- BUTTON / MENUS -->
+        <button class="btn btn-primary" routerLink="employee/add" style="position: relative;margin-left: 8px;">
+          Add Employee
+        </button>
+    
+        <app-login-button *ngIf="!username"></app-login-button>
+        <app-logout-button *ngIf="username"></app-logout-button>
+        <div *ngIf="username">Hi {{username}}</div>
+      </div>
+    </div>
+    <!-- RIGHT SIDE -->
+     <app-search-bar></app-search-bar>
+  </div>
+</nav>

@@ -14,8 +14,19 @@ import { JobNavigatorComponent } from './components/job-navigator/job-navigator.
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeInfoComponent } from './components/employee-info/employee-info.component';
-import { LoginComponent } from './components/login/login.component';
-//aws
+
+
+// Import the module from the SDK
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginMenuComponent } from './components/login-menu/login-menu.component';
+//AWS amplify cognito
+import Amplify from "aws-amplify";
+import awsconfig from "../aws-exports";
+import { AmplifyService } from 'aws-amplify-angular';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+
+Amplify.configure(awsconfig);
 
 
 // @TODO: MAKE SEARCH BAR UNFUNCTIONAL OUTSIDE OF EMPLOYEES COMPONENT
@@ -26,7 +37,7 @@ const routes: Routes = [
   { path: 'employee/find/:id', component: EmployeeInfoComponent },
   { path: 'employee/add', component: EmployeeFormComponent },
   { path: 'employee', component: EmployeesComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginMenuComponent },
   { path: '**', redirectTo: "employee", pathMatch: "full" }
 ];
 
@@ -38,7 +49,10 @@ const routes: Routes = [
     JobNavigatorComponent,
     SearchBarComponent,
     EmployeeInfoComponent,
-    LoginComponent
+    NavbarComponent,
+    LoginMenuComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -48,7 +62,7 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, AmplifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
