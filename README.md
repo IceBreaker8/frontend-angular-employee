@@ -25,3 +25,19 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## ERRORS:
+`npm add -D graphql` If you experience GraphQL problems.
+
+https://github.com/aws-amplify/amplify-js/issues/2365#issuecomment-660666391
+
+## Guide 
+
+https://medium.com/workfall/how-to-build-an-angular-authentication-application-using-aws-amplify-3cdc6e67cfc2
+
+## Docs
+
+https://docs.amplify.aws/start/q/integration/angular
+
+https://docs.amplify.aws/ui/auth/authenticator/q/framework/angular#installation
+
