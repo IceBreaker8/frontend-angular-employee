@@ -1,7 +1,7 @@
 <app-job-navigator></app-job-navigator>
 
 <div class="container main">
-
+  <button> {{ authSession.getUsername() }}</button>
     <div class="row" *ngIf="employees?.length != 0; else elseBlock">
         <div *ngFor="let employee of employees" class="col-sm-3">
 
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-
+      
     </div>
     <ng-template #elseBlock >
         <div class="alert alert-warning" role="alert" style="margin-top: 1rem;">

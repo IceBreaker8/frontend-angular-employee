@@ -16,11 +16,17 @@ export class LoginconfirmationComponent implements OnInit {
 
   username?: string = "";
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
-    private authSession: AuthSessionService) { }
+  constructor(private fb: FormBuilder, private route: Router,
+    private authSession: AuthSessionService) {
+
+  }
 
   ngOnInit(): void {
-    if (this.authSession.getUsername()) {
+    if (this.authSession.getUsername() == "") {
+      this.route.navigate([""]);
+      return;
+    }
+    if (this.authSession.getUsername() != "") {
       this.username = this.authSession.getUsername();
     }
     this.myForm = this.fb.group({
@@ -34,9 +40,7 @@ export class LoginconfirmationComponent implements OnInit {
       ]]
 
     });
-    if (this.authSession.getUsername()) {
-      this.myForm.controls["name"].disable();
-    }
+    this.myForm.controls["name"].disable();
 
 
   }
@@ -105,7 +109,7 @@ export class LoginconfirmationComponent implements OnInit {
     let username = this.myForm.get("name")?.value;
     try {
       await Auth.resendSignUp(username);
-      alert("Code sent successfully!");
+      alert("Code re-sent!");
     } catch (err) {
       //console.log('error resending code: ', err);
     }

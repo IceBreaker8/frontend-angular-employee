@@ -18,19 +18,21 @@ import { EmployeeInfoComponent } from './components/employee-info/employee-info.
 
 // Import the module from the SDK
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginMenuComponent } from './components/login-menu/login-menu.component';
+import { LoginMenuComponent } from './components/authentication/login/login-menu/login-menu.component';
 //AWS amplify cognito
 import Amplify from "aws-amplify";
 import awsconfig from "../aws-exports";
 import { AmplifyService, ConfirmSignInComponent } from 'aws-amplify-angular';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
-import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { SignupButtonComponent } from './components/signup-button/signup-button.component';
-import { LoginconfirmationComponent } from './components/loginconfirmation/loginconfirmation.component';
-import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
-import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
-import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { SignupComponent } from './components/authentication/sign-up/signup/signup.component';
+import { LoginconfirmationComponent } from './components/authentication/login/loginconfirmation/loginconfirmation.component';
+import { ForgotpasswordComponent } from './components/authentication/passwordmodification/forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './components/authentication/passwordmodification/resetpassword/resetpassword.component';
+import { LoginButtonComponent } from './components/authentication/login/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/authentication/logout-button/logout-button.component';
+import { ChangepasswordComponent } from './components/authentication/passwordmodification/changepassword/changepassword.component';
+import { ChangepasswordbuttonComponent } from './components/authentication/passwordmodification/changepasswordbutton/changepasswordbutton.component';
+import { ForgotpasswordbuttonComponent } from './components/authentication/passwordmodification/forgotpasswordbutton/forgotpasswordbutton.component';
+import { SignupButtonComponent } from './components/authentication/sign-up/signup-button/signup-button.component';
 
 Amplify.configure(awsconfig);
 
@@ -70,7 +72,9 @@ const routes: Routes = [
     LoginconfirmationComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    ForgotpasswordbuttonComponent,
+    ChangepasswordbuttonComponent
   ],
   imports: [
     RouterModule.forRoot(

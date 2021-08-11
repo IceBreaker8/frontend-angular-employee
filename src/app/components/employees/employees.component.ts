@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/app/components/employee';
+import { AuthSessionService } from 'src/app/services/auth-session.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class EmployeesComponent implements OnInit {
   //cm
 
   constructor(private employeeService: EmployeeService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, public authSession: AuthSessionService) { }
 
   jobTitle: string = "";
   subsname: string = "";

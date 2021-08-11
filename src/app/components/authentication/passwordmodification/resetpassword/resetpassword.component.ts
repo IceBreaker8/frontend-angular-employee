@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AmplifyService } from 'aws-amplify-angular';
 
-import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
+import { AuthSessionService } from 'src/app/services/auth-session.service';
 
 @Component({
   selector: 'app-resetpassword',
@@ -17,12 +17,16 @@ export class ResetpasswordComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router) { }
+  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+    private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
-
+    if (this.authSession.getUsername() == "") {
+      this.route.navigate([""]);
+      return;
+    }
     this.myForm = this.fb.group({
-      name: ["", [
+      name: [this.authSession.getUsername(), [
         Validators.required,
 
       ]],
@@ -34,7 +38,21 @@ export class ResetpasswordComponent implements OnInit {
       ]]
 
     });
+    this.myForm.controls["name"].disable();
 
+  }
+
+  async login(username: string, password: string) {
+
+    try {
+      const user = await Auth.signIn(username, password).then(user => {
+        this.route.navigate(["/employee"]);
+      }
+      );
+    } catch (error) {
+      alert(error.message);
+
+    }
   }
   onSubmit() {
     let username = this.myForm.get("name")?.value;
@@ -42,7 +60,8 @@ export class ResetpasswordComponent implements OnInit {
     let new_password = this.myForm.get("password")?.value;
     Auth.forgotPasswordSubmit(username, code, new_password)
       .then(data => {
-        this.route.navigate(["/login"]);
+        alert("Password changed successfully!");
+        this.login(username, new_password);
       })
       .catch(err => {
         alert(err.message);
