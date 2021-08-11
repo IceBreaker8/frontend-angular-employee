@@ -14,6 +14,7 @@
         </button>
     
         <app-login-button *ngIf="!username"></app-login-button>
+        <app-signup-button *ngIf="!username"></app-signup-button>
         <app-logout-button *ngIf="username"></app-logout-button>
         <div *ngIf="username">Hi {{username}}</div>
       </div>

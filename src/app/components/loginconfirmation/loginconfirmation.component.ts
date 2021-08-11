@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 
-import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Auth } from 'aws-amplify';
-import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-login-menu',
-  templateUrl: './login-menu.component.html',
-  styleUrls: ['./login-menu.component.css']
+  selector: 'app-loginconfirmation',
+  templateUrl: './loginconfirmation.component.html',
+  styleUrls: ['./loginconfirmation.component.css']
 })
-export class LoginMenuComponent implements OnInit {
-
-
+export class LoginconfirmationComponent implements OnInit {
 
   myForm!: FormGroup;
 
@@ -25,10 +21,10 @@ export class LoginMenuComponent implements OnInit {
 
     this.myForm = this.fb.group({
       name: ["", [
-        Validators.required,
+        Validators.required
 
       ]],
-      password: ["", [
+      confirmationCode: ["", [
         Validators.required,
 
       ]]
@@ -37,12 +33,23 @@ export class LoginMenuComponent implements OnInit {
 
   }
 
+  onSubmit() {
+    let username = this.myForm.get("name")?.value;
+    let confirmationCode = this.myForm.get("confirmationCode")?.value;
+    this.confirmSignUp(username, confirmationCode);
+  }
 
 
+  async confirmSignUp(username: string, code: string) {
+    try {
+      await Auth.confirmSignUp(username, code);
+      this.route.navigate(["/login"]);
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
-  async onSubmit() {
-    let username: string = this.myForm.get("name")?.value;
-    let password: string = this.myForm.get("password")?.value;
+  async loginUser(username: string, password: string) {
     try {
       const user = await Auth.signIn(username, password).then(user => {
         //console.log(user);
@@ -54,7 +61,6 @@ export class LoginMenuComponent implements OnInit {
 
       );
     } catch (error) {
-      alert(error.message);
       if (error["code"] == "UserNotConfirmedException") {
         this.route.navigate(["/confirm-signup"]);
       }
@@ -72,16 +78,26 @@ export class LoginMenuComponent implements OnInit {
 
           ).then(user => {
             // at this time the user is logged in if no MFA required
-            console.log(user);
+            //console.log(user);
           }).catch(e => {
-            alert(e.message);
+
           });
         } else {
           // other situations
         }
       }).catch(e => {
-        alert(e.message);
+
       });
+  }
+
+  async resendConfirmationCode() {
+    let username = this.myForm.get("name")?.value;
+    try {
+      await Auth.resendSignUp(username);
+      alert("Code sent successfully!");
+    } catch (err) {
+      //console.log('error resending code: ', err);
+    }
   }
 
 }

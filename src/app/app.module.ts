@@ -22,9 +22,15 @@ import { LoginMenuComponent } from './components/login-menu/login-menu.component
 //AWS amplify cognito
 import Amplify from "aws-amplify";
 import awsconfig from "../aws-exports";
-import { AmplifyService } from 'aws-amplify-angular';
+import { AmplifyService, ConfirmSignInComponent } from 'aws-amplify-angular';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SignupButtonComponent } from './components/signup-button/signup-button.component';
+import { LoginconfirmationComponent } from './components/loginconfirmation/loginconfirmation.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 Amplify.configure(awsconfig);
 
@@ -37,7 +43,13 @@ const routes: Routes = [
   { path: 'employee/find/:id', component: EmployeeInfoComponent },
   { path: 'employee/add', component: EmployeeFormComponent },
   { path: 'employee', component: EmployeesComponent },
+  //authentication routes
   { path: 'login', component: LoginMenuComponent },
+  { path: "signup", component: SignupComponent },
+  { path: "confirm-signup", component: LoginconfirmationComponent },
+  { path: "forgot-password", component: ForgotpasswordComponent },
+  { path: "reset-password", component: ResetpasswordComponent },
+  { path: "change-password", component: ChangepasswordComponent },
   { path: '**', redirectTo: "employee", pathMatch: "full" }
 ];
 
@@ -52,7 +64,13 @@ const routes: Routes = [
     NavbarComponent,
     LoginMenuComponent,
     LoginButtonComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    SignupComponent,
+    SignupButtonComponent,
+    LoginconfirmationComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent,
+    ChangepasswordComponent
   ],
   imports: [
     RouterModule.forRoot(

@@ -13,17 +13,17 @@
     </div>
     <!-- Email address -->
     <div style="margin-top: 8px;" class="form-group">
-      <label #ref5 for="password">Password:</label>
-      <input #ref6 type="password" class="form-control" placeholder="Enter password" formControlName="password">
+      <label #ref5 for="text">Confirmation Code:</label>
+      <input #ref6 type="text" class="form-control" placeholder="Enter confirmation code" formControlName="confirmationCode">
       <small #ref7>Please enter a valid email</small>
       <small #ref8>Please enter an email</small>
     </div>
     
-    <!-- submittion -->
     
-    <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Confirm</button>
   </form>
-  <button routerLink="/forgot-password" style="margin-top: 8px;margin-right: 4px;" class="btn btn-primary">Forgot password?</button>
-  <button routerLink="/change-password" style="margin-top: 8px;margin-right: 4px;" class="btn btn-primary">Change password</button>
+  <!-- submittion -->
+    <button class="btn btn-primary" style="margin-top: 8px;margin-right: 8px;"
+    (click)="resendConfirmationCode()">Re-send confirmation</button>
 
 </div>

@@ -3,7 +3,7 @@
 
   
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <!-- Name -->
+    <!-- Username -->
     <div style="margin-top: 8px;" class="form-group">
       <label #ref1 for="name">Username:</label>
       
@@ -11,8 +11,16 @@
       <small #ref3>Your name length should be between 4 and 20 characters</small>
       <small #ref4>Please enter a name</small>
     </div>
-    <!-- Email address -->
+    <!-- Email Address -->
     <div style="margin-top: 8px;" class="form-group">
+      <label #ref1 for="name">Username:</label>
+      
+      <input #ref2 type="email" class="form-control" placeholder="Enter email" formControlName="email">
+      <small #ref3>Your name length should be between 4 and 20 characters</small>
+      <small #ref4>Please enter an email</small>
+    </div>
+    <!-- Password -->
+    <div style="margin-top: 8px;"   class="form-group">
       <label #ref5 for="password">Password:</label>
       <input #ref6 type="password" class="form-control" placeholder="Enter password" formControlName="password">
       <small #ref7>Please enter a valid email</small>
@@ -23,7 +31,5 @@
     
     <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
   </form>
-  <button routerLink="/forgot-password" style="margin-top: 8px;margin-right: 4px;" class="btn btn-primary">Forgot password?</button>
-  <button routerLink="/change-password" style="margin-top: 8px;margin-right: 4px;" class="btn btn-primary">Change password</button>
 
 </div>

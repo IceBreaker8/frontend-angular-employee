@@ -1,6 +1,6 @@
 {
   "auth": {
-    "employeeapp023467f6": {
+    "employeeapp36a9a26b": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
