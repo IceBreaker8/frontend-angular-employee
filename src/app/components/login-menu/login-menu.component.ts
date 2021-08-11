@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
+import { AuthSessionService } from 'src/app/services/auth-session.service';
 
 @Component({
   selector: 'app-login-menu',
@@ -19,7 +20,8 @@ export class LoginMenuComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router) { }
+  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+    private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
 
@@ -56,6 +58,10 @@ export class LoginMenuComponent implements OnInit {
     } catch (error) {
       alert(error.message);
       if (error["code"] == "UserNotConfirmedException") {
+        let username = this.myForm.get("name")?.value;
+        let password = this.myForm.get("password")?.value;
+        this.authSession.setPassword(password);
+        this.authSession.setUsername(username);
         this.route.navigate(["/confirm-signup"]);
       }
     }

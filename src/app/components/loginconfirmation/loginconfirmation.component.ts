@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
+import { AuthSessionService } from 'src/app/services/auth-session.service';
 
 @Component({
   selector: 'app-loginconfirmation',
@@ -13,14 +14,17 @@ export class LoginconfirmationComponent implements OnInit {
 
   myForm!: FormGroup;
 
+  username?: string = "";
 
-
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router) { }
+  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+    private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
-
+    if (this.authSession.getUsername()) {
+      this.username = this.authSession.getUsername();
+    }
     this.myForm = this.fb.group({
-      name: ["", [
+      name: [this.username, [
         Validators.required
 
       ]],
@@ -30,6 +34,10 @@ export class LoginconfirmationComponent implements OnInit {
       ]]
 
     });
+    if (this.authSession.getUsername()) {
+      this.myForm.controls["name"].disable();
+    }
+
 
   }
 
@@ -43,7 +51,10 @@ export class LoginconfirmationComponent implements OnInit {
   async confirmSignUp(username: string, code: string) {
     try {
       await Auth.confirmSignUp(username, code);
-      this.route.navigate(["/login"]);
+      this.loginUser(this.authSession.getUsername()!, this.authSession.getPassword()!);
+      this.authSession.setUsername("");
+      this.authSession.setPassword("");
+
     } catch (error) {
       alert(error.message);
     }

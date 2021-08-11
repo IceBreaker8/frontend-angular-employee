@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
+import { AuthSessionService } from 'src/app/services/auth-session.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,8 @@ export class SignupComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router) { }
+  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+    private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
 
@@ -39,13 +41,7 @@ export class SignupComponent implements OnInit {
     });
 
   }
-  getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-  }
-  userExist(email: string) {
 
-
-  }
 
   async onSubmit() {
     let username = this.myForm.get("name")?.value;
@@ -79,6 +75,8 @@ export class SignupComponent implements OnInit {
 
         }
       });
+      this.authSession.setPassword(password);
+      this.authSession.setUsername(username);
       this.route.navigate(["/confirm-signup"]);
     } catch (error) {
       //check if user already exists for example
