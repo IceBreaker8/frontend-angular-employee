@@ -23,7 +23,7 @@ export class LoginconfirmationComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authSession.getUsername() == "") {
-      this.route.navigate([""]);
+      window.location.href = "";
       return;
     }
     if (this.authSession.getUsername() != "") {
@@ -113,6 +113,31 @@ export class LoginconfirmationComponent implements OnInit {
     } catch (err) {
       //console.log('error resending code: ', err);
     }
+  }
+
+  // FORM STYLING FUNCTIONS
+
+  public inputOnChange(label: any, input: any, smallError: any, smallEmpty: any, divName: string) {
+    if (this.myForm.get(divName)?.invalid) {
+      input.style.borderColor = "red";
+      if (this.myForm.get(divName)?.value?.length == 0) {
+        smallEmpty.style.display = "block";
+        smallError.style.display = "none";
+        smallEmpty.style.color = "red";
+      } else {
+        smallError.style.display = "block";
+        smallEmpty.style.display = "none";
+      }
+
+      smallError.style.color = "red";
+
+    } else {
+      input.style.borderColor = "green";
+      smallError.style.display = "none";
+      smallEmpty.style.display = "none";
+    }
+
+
   }
 
 }

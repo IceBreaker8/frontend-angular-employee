@@ -16,7 +16,9 @@
         <app-login-button *ngIf="!username"></app-login-button>
         <app-signup-button *ngIf="!username"></app-signup-button>
         <app-logout-button *ngIf="username"></app-logout-button>
-        <div *ngIf="username">Hi {{username}}</div>
+        
+        <button routerLink="/profile" class="btn btn-danger" style="margin-left: 52.8%;
+         position: absolute;" *ngIf="username">Profile</button>
       </div>
     </div>
     <!-- RIGHT SIDE -->

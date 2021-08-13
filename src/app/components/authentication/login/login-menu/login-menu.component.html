@@ -1,29 +1,36 @@
-<div class="container">
+<div class="container card shadow p-3 mb-5 bg-body rounded" id="loginStyle">
 
 
-  
+  <h3 style="text-align: center;">Sign in to your account</h3>
+  <hr>
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <!-- Name -->
     <div style="margin-top: 8px;" class="form-group">
-      <label #ref1 for="name">Username:</label>
+      <label #ref1 for="name">Username or email:</label>
       
-      <input #ref2 type="text" class="form-control" placeholder="Enter username" formControlName="name">
-      <small #ref3>Your name length should be between 4 and 20 characters</small>
-      <small #ref4>Please enter a name</small>
+      <input #ref2 type="text" class="form-control" (keyup)="inputOnChange(ref1,ref2,ref3,ref4,'name')"
+       placeholder="Enter username" formControlName="name">
+      <small #ref3></small>
+      <small #ref4></small>
     </div>
     <!-- Email address -->
     <div style="margin-top: 8px;" class="form-group">
       <label #ref5 for="password">Password:</label>
-      <input #ref6 type="password" class="form-control" placeholder="Enter password" formControlName="password">
-      <small #ref7>Please enter a valid email</small>
-      <small #ref8>Please enter an email</small>
+      <input #ref6 type="password" class="form-control" (keyup)="inputOnChange(ref5,ref6,ref7,ref8,'password')"
+       placeholder="Enter password" formControlName="password">
+      <small #ref7></small>
+      <small #ref8></small>
+    </div>
+    <div style="color: gray; font-size: small;margin-top: 4px">
+      Forgot your password? <app-forgotpasswordbutton></app-forgotpasswordbutton>
     </div>
     
     <!-- submittion -->
     
-    <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    <button style="margin-top: 8px; margin-left: 46%;"
+     [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Sign in</button>
   </form>
-  <app-forgotpasswordbutton></app-forgotpasswordbutton>
+  
   <!-- <app-changepasswordbutton></app-changepasswordbutton> -->
 
 </div>

@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
           (browserRefresh && routeString.includes("/reset-password"))) {
           this.authSession.setPassword("");
           this.authSession.setUsername("");
-          this.route.navigate([""]);
+          window.location.href = "";
 
         }
 
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
             let routeString = event.url;
             if (this.pathArray.indexOf(routeString) > -1) {
               if (this.authSession.getUsername() != "") {
-                this.route.navigate([""]);
+                window.location.href = "";
               }
             }
             if (!routeString.includes("/confirm-signup") && !routeString.includes("/reset-password")) {

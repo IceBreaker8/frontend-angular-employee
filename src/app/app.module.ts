@@ -33,6 +33,7 @@ import { ChangepasswordComponent } from './components/authentication/passwordmod
 import { ChangepasswordbuttonComponent } from './components/authentication/passwordmodification/changepasswordbutton/changepasswordbutton.component';
 import { ForgotpasswordbuttonComponent } from './components/authentication/passwordmodification/forgotpasswordbutton/forgotpasswordbutton.component';
 import { SignupButtonComponent } from './components/authentication/sign-up/signup-button/signup-button.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 Amplify.configure(awsconfig);
 
@@ -52,6 +53,8 @@ const routes: Routes = [
   { path: "forgot-password", component: ForgotpasswordComponent },
   { path: "reset-password", component: ResetpasswordComponent },
   { path: "change-password", component: ChangepasswordComponent },
+  //profile routes
+  { path: "profile", component: ProfileComponent },
   { path: '**', redirectTo: "employee", pathMatch: "full" }
 ];
 
@@ -74,7 +77,8 @@ const routes: Routes = [
     ResetpasswordComponent,
     ChangepasswordComponent,
     ForgotpasswordbuttonComponent,
-    ChangepasswordbuttonComponent
+    ChangepasswordbuttonComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule.forRoot(

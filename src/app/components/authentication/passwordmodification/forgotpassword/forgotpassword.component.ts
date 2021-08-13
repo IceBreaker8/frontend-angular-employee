@@ -44,4 +44,30 @@ export class ForgotpasswordComponent implements OnInit {
       });
   }
 
+  //form styling
+  // FORM STYLING FUNCTIONS
+
+  public inputOnChange(label: any, input: any, smallError: any, smallEmpty: any, divName: string) {
+    if (this.myForm.get(divName)?.invalid) {
+      input.style.borderColor = "red";
+      if (this.myForm.get(divName)?.value?.length == 0) {
+        smallEmpty.style.display = "block";
+        smallError.style.display = "none";
+        smallEmpty.style.color = "red";
+      } else {
+        smallError.style.display = "block";
+        smallEmpty.style.display = "none";
+      }
+
+      smallError.style.color = "red";
+
+    } else {
+      input.style.borderColor = "green";
+      smallError.style.display = "none";
+      smallEmpty.style.display = "none";
+    }
+
+
+  }
+
 }

@@ -1,5 +1,7 @@
-<div class="container">
+<div class="container card shadow p-3 mb-5 bg-body rounded" id="loginStyle">
 
+<h3 style="text-align: center;">Create an account</h3>
+  <hr>
 
   
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
@@ -7,29 +9,33 @@
     <div style="margin-top: 8px;" class="form-group">
       <label #ref1 for="name">Username:</label>
       
-      <input #ref2 type="text" class="form-control" placeholder="Enter username" formControlName="name">
-      <small #ref3>Your name length should be between 4 and 20 characters</small>
-      <small #ref4>Please enter a name</small>
+      <input #ref2 type="text" class="form-control" (keyup)="inputOnChange(ref1,ref2,ref3,ref4,'name')"
+       placeholder="Enter username" formControlName="name">
+      <small #ref3>You username must contain between 3 and 20 characters</small>
+      <small #ref4>Please enter a username</small>
     </div>
     <!-- Email Address -->
     <div style="margin-top: 8px;" class="form-group">
-      <label #ref1 for="name">Username:</label>
+      <label #ref5 for="name">Email Address:</label>
       
-      <input #ref2 type="email" class="form-control" placeholder="Enter email" formControlName="email">
-      <small #ref3>Your name length should be between 4 and 20 characters</small>
-      <small #ref4>Please enter an email</small>
+      <input #ref6 type="email" class="form-control" (keyup)="inputOnChange(ref5,ref6,ref7,ref8,'email')"
+       placeholder="Enter email" formControlName="email">
+      <small #ref7>Please enter a valid email</small>
+      <small #ref8>Please enter an email</small>
     </div>
     <!-- Password -->
     <div style="margin-top: 8px;"   class="form-group">
-      <label #ref5 for="password">Password:</label>
-      <input #ref6 type="password" class="form-control" placeholder="Enter password" formControlName="password">
-      <small #ref7>Please enter a valid email</small>
-      <small #ref8>Please enter an email</small>
+      <label #ref9 for="password">Password:</label>
+      <input #ref10 type="password" class="form-control" (keyup)="inputOnChange(ref9,ref10,ref11,ref12,'password')"
+       placeholder="Enter password" formControlName="password">
+      <small #ref11>Your password must contain between 5 and 20 characters</small>
+      <small #ref12>Please enter a password</small>
     </div>
     
     <!-- submittion -->
     
-    <button  style="margin-top: 8px;" [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    <button style="margin-top: 8px; margin-left: 45%;"
+     [disabled]="myForm.invalid" type="submit" class="btn btn-primary">Sign Up</button>
   </form>
 
 </div>

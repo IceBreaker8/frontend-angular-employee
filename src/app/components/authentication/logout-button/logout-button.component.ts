@@ -17,11 +17,11 @@ export class LogoutButtonComponent implements OnInit {
     try {
       await Auth.signOut().then
         (res => {
-
+          window.location.href = "";
 
         });
     } catch (error) {
-      console.log('error signing out: ', error);
+      console.log(error.message);
     }
   }
 
