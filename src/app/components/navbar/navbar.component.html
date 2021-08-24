@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid" style="margin-left: 12%;">
-    <button class="btn btn-dark" routerLink="employee">
+    <button class="btn btn-dark" *ngIf="loggedIn" routerLink="employee">
       Employees   
     </button>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!-- BUTTON / MENUS -->
-        <button class="btn btn-primary" routerLink="employee/add" style="position: relative;margin-left: 8px;">
+        <button *ngIf="loggedIn" class="btn btn-primary" routerLink="employee/add" style="position: relative;margin-left: 8px;">
           Add Employee
         </button>
-    
-        <app-login-button *ngIf="!username"></app-login-button>
-        <app-signup-button *ngIf="!username"></app-signup-button>
-        <app-logout-button *ngIf="username"></app-logout-button>
+        
+        
+        <app-login-button *ngIf="!loggedIn"></app-login-button>
+        <app-signup-button *ngIf="!loggedIn"></app-signup-button>
+        <app-logout-button *ngIf="loggedIn"></app-logout-button>
         
         <button routerLink="/profile" class="btn btn-danger" style="margin-left: 52.8%;
-         position: absolute;" *ngIf="username">Profile</button>
+         position: absolute;" *ngIf="loggedIn">Profile</button>
       </div>
     </div>
     <!-- RIGHT SIDE -->
-     <app-search-bar></app-search-bar>
+     <app-search-bar *ngIf="loggedIn"></app-search-bar>
   </div>
 </nav>

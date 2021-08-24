@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 
 @Component({
@@ -8,7 +9,7 @@ import { Auth } from 'aws-amplify';
 })
 export class LogoutButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +18,7 @@ export class LogoutButtonComponent implements OnInit {
     try {
       await Auth.signOut().then
         (res => {
-          window.location.href = "";
+          this.route.navigate([""]);
 
         });
     } catch (error) {

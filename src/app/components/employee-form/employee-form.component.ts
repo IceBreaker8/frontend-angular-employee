@@ -2,7 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
+import { Auth } from 'aws-amplify';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from '../user';
 //tests
 @Component({
   selector: 'app-employee-form',
@@ -15,14 +18,43 @@ export class EmployeeFormComponent implements OnInit {
   myForm!: FormGroup;
   submitted: boolean = false;
   mode!: Mode;
+  userId?: number;
   edit: boolean = false;
-  constructor(private fb: FormBuilder, private service: EmployeeService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private service: EmployeeService, private route: ActivatedRoute,
+    private userService: UserService) {
     this.service.setEdit(false);
     this.edit = this.service.getEdit();
 
   }
 
   ngOnInit(): void {
+    //
+    Auth.currentAuthenticatedUser().then(
+      res => {
+        this.userService.getUserByEmail(res.attributes.email).subscribe(
+          (res: User) => {
+            this.userId = res.id;
+            if (this.route.snapshot.paramMap.has("id")) {
+              this.service.setEdit(true);
+              this.edit = this.service.getEdit();
+              //
+
+              this.service.getEmployeeById(this.userId!, this.route.snapshot.params["id"]).subscribe(
+                (res: Employee) => {
+                  this.myForm.get("name")?.setValue(res.name);
+                  this.myForm.get("jobTitle")?.setValue(res.jobTitle);
+                  this.myForm.get("email")?.setValue(res.email);
+                  this.myForm.get("phone")?.setValue(res.phone);
+                }, (error: HttpErrorResponse) => {
+                  alert(error.message);
+                }
+              )
+            }
+          }
+        )
+      }
+    )
+    //
     this.myForm = this.fb.group({
       name: ["", [
         Validators.required,
@@ -48,20 +80,7 @@ export class EmployeeFormComponent implements OnInit {
 
     });
 
-    if (this.route.snapshot.paramMap.has("id")) {
-      this.service.setEdit(true);
-      this.edit = this.service.getEdit();
-      this.service.getEmployeeById(this.route.snapshot.params["id"]).subscribe(
-        (res: Employee) => {
-          this.myForm.get("name")?.setValue(res.name);
-          this.myForm.get("jobTitle")?.setValue(res.jobTitle);
-          this.myForm.get("email")?.setValue(res.email);
-          this.myForm.get("phone")?.setValue(res.phone);
-        }, (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      )
-    }
+
 
 
   }
@@ -116,7 +135,7 @@ export class EmployeeFormComponent implements OnInit {
   public onSubmit() {
     if (this.edit) {
       alert(this.edit);
-      this.service.updateEmployee(+this.route.snapshot.params["id"], this.myForm.value).subscribe(
+      this.service.updateEmployee(this.userId!, +this.route.snapshot.params["id"], this.myForm.value).subscribe(
         () => {
           this.submitted = true;
         }, (error: HttpErrorResponse) => {
@@ -124,7 +143,7 @@ export class EmployeeFormComponent implements OnInit {
         }
       )
     } else {
-      this.service.addEmployee(this.myForm.value).subscribe(
+      this.service.addEmployee(this.userId!, this.myForm.value).subscribe(
         () => {
           this.submitted = true;
 
@@ -149,6 +168,4 @@ export interface Employee {
   email: string;
   phone: string;
   jobTitle: string;
-  imageUrl: string;
-  employeeCode: string;
 }

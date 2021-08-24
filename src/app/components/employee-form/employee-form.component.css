@@ -2,6 +2,13 @@ small {
   font-size: medium;
 }
 
+#loginStyle {
+  margin-top: 12px;
+  width: 80%;
+
+}
+
+
 .form-control:focus {
   border-color: grey;
   -webkit-box-shadow: none;
@@ -9,15 +16,15 @@ small {
 }
 
 input[type=text] {
-  width: 480px;
+  width: 90%;
 }
 
 input[type=email] {
-  width: 480px;
+  width: 90%;
 }
 
 input[type=tel] {
-  width: 480px;
+  width: 90%;
 }
 
 .input-icons i {

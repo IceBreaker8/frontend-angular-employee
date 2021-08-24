@@ -19,38 +19,36 @@ export class EmployeeService {
   public setEdit(value: boolean) {
     this.edit = value;
   }
-  public getEmployeesByNameContaining(substring: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/search/${substring}`);
+  public getEmployeesByNameContaining(userId: number, substring: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/search/users/${userId}/employees/${substring}`);
   }
 
   constructor(private http: HttpClient) { }
 
-  public getEmployees(): Observable<Employee[]> {
+  public getEmployees(userId: number): Observable<Employee[]> {
 
-    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/all`);
+    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/get/users/${userId}/all`);
   }
-  public addEmployee(employee: Employee): Observable<Employee> {
+  public addEmployee(userId: number, employee: Employee): Observable<Employee> {
 
-    return this.http.post<Employee>(`${this.apiServerUrl}/employee/add`, employee);
-  }
-
-  public getEmployeesByJobTitle(jobTitle: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/jobs/${jobTitle}`);
-  }
-  public getEmployeeById(employeeId: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.apiServerUrl}/employee/find/${employeeId}`);
-  }
-  public updateEmployee(employeeId: number, employee: Employee): Observable<void> {
-
-    return this.http.put<void>(`${this.apiServerUrl}/employee/update/${employeeId}`, employee);
+    return this.http.post<Employee>(`${this.apiServerUrl}/employee/post/users/${userId}`, employee);
   }
 
-  public deleteEmployee(employeeId: number): Observable<Employee[]> {
-    return this.http.delete<Employee[]>(`${this.apiServerUrl}/employee/delete/${employeeId}`);
+  public getEmployeesByJobTitle(userId: number, jobTitle: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/jobs/users/${userId}/employees/${jobTitle}`);
   }
-  public findEmployee(employeeId: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.apiServerUrl}/employee/find/${employeeId}`);
+  public getEmployeeById(userId: number, employeeId: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiServerUrl}/employee/find/users/${userId}/employees/${employeeId}`);
   }
+  public updateEmployee(userId: number, employeeId: number, employee: Employee): Observable<void> {
+
+    return this.http.put<void>(`${this.apiServerUrl}/employee/update/users/${userId}/employees/${employeeId}`, employee);
+  }
+
+  public deleteEmployee(userId: number, employeeId: number): Observable<Employee[]> {
+    return this.http.delete<Employee[]>(`${this.apiServerUrl}/employee/delete/users/${userId}/employees/${employeeId}`);
+  }
+
 
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 
 
@@ -11,19 +12,23 @@ export class NavbarComponent implements OnInit {
 
   constructor(private amplifyService: AmplifyService) { }
 
-  username?: undefined;
-
+  loggedIn?: boolean;
   ngOnInit(): void {
 
     this.amplifyService.authStateChange$.subscribe(
       res => {
-
         try {
-          this.username = res.user.username;
+          Auth.currentAuthenticatedUser().then(
+            res => {
+              this.loggedIn = true;
+            },
+            error => {
+              this.loggedIn = false;
+            }
+          )
           //console.log(res.user.username);
         } catch (err) {
 
-          this.username = undefined;
         }
 
       }

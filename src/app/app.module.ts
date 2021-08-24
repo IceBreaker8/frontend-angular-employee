@@ -34,6 +34,9 @@ import { ChangepasswordbuttonComponent } from './components/authentication/passw
 import { ForgotpasswordbuttonComponent } from './components/authentication/passwordmodification/forgotpasswordbutton/forgotpasswordbutton.component';
 import { SignupButtonComponent } from './components/authentication/sign-up/signup-button/signup-button.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserService } from './services/user.service';
+import { ProfileService } from './services/profile.service';
+import { HomeComponent } from './components/home/home.component';
 
 Amplify.configure(awsconfig);
 
@@ -46,6 +49,8 @@ const routes: Routes = [
   { path: 'employee/find/:id', component: EmployeeInfoComponent },
   { path: 'employee/add', component: EmployeeFormComponent },
   { path: 'employee', component: EmployeesComponent },
+  //home
+  { path: 'home', component: HomeComponent },
   //authentication routes
   { path: 'login', component: LoginMenuComponent },
   { path: "signup", component: SignupComponent },
@@ -55,7 +60,7 @@ const routes: Routes = [
   { path: "change-password", component: ChangepasswordComponent },
   //profile routes
   { path: "profile", component: ProfileComponent },
-  { path: '**', redirectTo: "employee", pathMatch: "full" }
+  { path: '**', redirectTo: "home", pathMatch: "full" }
 ];
 
 @NgModule({
@@ -78,7 +83,8 @@ const routes: Routes = [
     ChangepasswordComponent,
     ForgotpasswordbuttonComponent,
     ChangepasswordbuttonComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -88,7 +94,7 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService, AmplifyService],
+  providers: [EmployeeService, AmplifyService, UserService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthSessionService } from './services/auth-session.service';
 import { NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserService } from './services/user.service';
 
 export let browserRefresh = false;
 
@@ -23,7 +24,11 @@ export class AppComponent implements OnInit {
   subscription: Subscription;
 
   constructor(public amplifyService: AmplifyService, private route: Router,
-    public authSession: AuthSessionService) {
+    public authSession: AuthSessionService, private userService: UserService) {
+    //testing user service
+
+
+
     //detect reloading: empty authSession service and change the route
     this.subscription = route.events.subscribe((event) => {
       if (event instanceof NavigationStart) {

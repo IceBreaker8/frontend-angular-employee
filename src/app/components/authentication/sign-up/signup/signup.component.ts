@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
 import { AuthSessionService } from 'src/app/services/auth-session.service';
+import { User } from 'src/app/components/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +22,8 @@ export class SignupComponent implements OnInit {
 
 
   constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
-    private authSession: AuthSessionService) { }
+    private authSession: AuthSessionService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -82,6 +85,13 @@ export class SignupComponent implements OnInit {
       });
       this.authSession.setPassword(password);
       this.authSession.setUsername(username);
+      //call user service
+
+      this.userService.addUser({ username, email }).subscribe(
+        res => {
+          //console.log(res);
+        }
+      );
       this.route.navigate(["/confirm-signup"]);
     } catch (error) {
       //check if user already exists for example
