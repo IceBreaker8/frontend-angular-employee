@@ -134,7 +134,6 @@ export class EmployeeFormComponent implements OnInit {
   // submitting form
   public onSubmit() {
     if (this.edit) {
-      alert(this.edit);
       this.service.updateEmployee(this.userId!, +this.route.snapshot.params["id"], this.myForm.value).subscribe(
         () => {
           this.submitted = true;

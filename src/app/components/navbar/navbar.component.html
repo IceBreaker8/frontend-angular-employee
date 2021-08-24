@@ -1,28 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid" style="margin-left: 12%;">
+
+    <!--  -->
+
+        <!-- BUTTON / MENUS -->
+          <!--  -->
+        
+        
+        
+        
+        
+        
+        
+
+    <!-- RIGHT SIDE -->
+     
+
+
+<ul>
+  <li style="margin-left: 11%;position:absolute;">
     <button class="btn btn-dark" *ngIf="loggedIn" routerLink="employee">
       Employees   
     </button>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <!-- BUTTON / MENUS -->
-        <button *ngIf="loggedIn" class="btn btn-primary" routerLink="employee/add" style="position: relative;margin-left: 8px;">
+  </li>
+  <li><button routerLink="/home" class="btn" style="position:absolute; background-color: rgb(24, 73, 179);color: white;
+    margin-left: 2.8%;">Home</button></li>
+  <li style="margin-left: 18%;position:absolute;"><button *ngIf="loggedIn" class="btn btn-primary" routerLink="employee/add" style="position: relative;margin-left: 8px;">
           Add Employee
-        </button>
-        
-        
-        <app-login-button *ngIf="!loggedIn"></app-login-button>
-        <app-signup-button *ngIf="!loggedIn"></app-signup-button>
-        <app-logout-button *ngIf="loggedIn"></app-logout-button>
-        
-        <button routerLink="/profile" class="btn btn-danger" style="margin-left: 52.8%;
-         position: absolute;" *ngIf="loggedIn">Profile</button>
-      </div>
-    </div>
-    <!-- RIGHT SIDE -->
-     <app-search-bar *ngIf="loggedIn"></app-search-bar>
-  </div>
-</nav>
+        </button></li>
+        <!---->
+          <li style="margin-left: 73%;position:absolute;"><app-login-button *ngIf="!loggedIn"></app-login-button></li>
+          <li style="margin-left: 78%;position:absolute;"><app-signup-button *ngIf="!loggedIn"></app-signup-button></li>
+        <!---->
+  <li style="margin-left: 78.4%;position:absolute;"><app-logout-button *ngIf="loggedIn"></app-logout-button></li>
+  <li style="margin-left: 73%;position:absolute;"><button routerLink="/profile" class="btn btn-danger"
+       *ngIf="loggedIn">Profile</button></li>
+       <li style="float: right;"><app-search-bar *ngIf="loggedIn"></app-search-bar></li>
+</ul>

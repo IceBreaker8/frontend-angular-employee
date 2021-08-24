@@ -10,7 +10,7 @@ export class SearchBarComponent implements OnInit {
 
   searchWord: string = "";
 
-  constructor(private route: Router, private activeRouter: ActivatedRoute) {
+  constructor(private route: Router) {
 
 
   }
@@ -21,7 +21,10 @@ export class SearchBarComponent implements OnInit {
 
 
   public onSearchType(searchWord: string) {
-    console.log(this.route.url);
+    if (searchWord == "") {
+      this.route.navigate(["/employee"]);
+      return;
+    }
     if (this.route.url == "/employee" || this.route.url.includes("/employee/search/")
       || this.route.url.includes("/employee/jobs/")) {
       this.route.navigate([`/employee/search/${searchWord}`]);
