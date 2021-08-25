@@ -21,53 +21,33 @@ export class AppComponent implements OnInit {
   //loaded = false;
   title = "employeeamangerapp"
   //detect reloading page
-  subscription: Subscription;
+  //subscription: Subscription;
 
   constructor(public amplifyService: AmplifyService, private route: Router,
     public authSession: AuthSessionService, private userService: UserService) {
     //testing user service
 
 
-
-    //detect reloading: empty authSession service and change the route
-    this.subscription = route.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        browserRefresh = !route.navigated;
-        let routeString = event.url;
-        if ((browserRefresh && routeString.includes("/confirm-signup")) ||
-          (browserRefresh && routeString.includes("/reset-password"))) {
-          this.authSession.setPassword("");
-          this.authSession.setUsername("");
-          window.location.href = "";
-
-        }
-
-      }
-    });
-
-  }
-
-  pathArray = ["/login", "/signup", "/forgot-password"]
-  ngOnInit() {
-    //detect changing components: empty authSession service and change the route
-    this.route.events
-      .subscribe(
-        (event: any) => {
-          if (event instanceof NavigationEnd) {
+    /*
+        //detect reloading: empty authSession service and change the route
+        this.subscription = route.events.subscribe((event) => {
+          if (event instanceof NavigationStart) {
+            browserRefresh = !route.navigated;
             let routeString = event.url;
-            if (this.pathArray.indexOf(routeString) > -1) {
-              if (this.authSession.getUsername() != "") {
-                window.location.href = "";
-              }
-            }
-            if (!routeString.includes("/confirm-signup") && !routeString.includes("/reset-password")) {
+            if ((browserRefresh && routeString.includes("/confirm-signup")) ||
+              (browserRefresh && routeString.includes("/reset-password"))) {
               this.authSession.setPassword("");
               this.authSession.setUsername("");
-
+              window.location.href = "";
+    
             }
-
+    
           }
         });
+    */
+  }
+  ngOnInit() {
+
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 
+export var loggedIn: boolean;
 
 @Component({
   selector: 'app-navbar',
@@ -17,20 +18,8 @@ export class NavbarComponent implements OnInit {
 
     this.amplifyService.authStateChange$.subscribe(
       res => {
-        try {
-          Auth.currentAuthenticatedUser().then(
-            res => {
-              this.loggedIn = true;
-            },
-            error => {
-              this.loggedIn = false;
-            }
-          )
-          //console.log(res.user.username);
-        } catch (err) {
-
-        }
-
+        this.loggedIn = res.state == "signedIn" ? true : false;
+        loggedIn = res.state == "signedIn" ? true : false;
       }
     );
   }

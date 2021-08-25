@@ -37,29 +37,30 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserService } from './services/user.service';
 import { ProfileService } from './services/profile.service';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 Amplify.configure(awsconfig);
 
 
 // @TODO: MAKE SEARCH BAR UNFUNCTIONAL OUTSIDE OF EMPLOYEES COMPONENT
 const routes: Routes = [
-  { path: 'employee/update/:id', component: EmployeeFormComponent },
-  { path: "employee/search/:subsname", component: EmployeesComponent },
-  { path: 'employee/jobs/:jobTitle', component: EmployeesComponent },
-  { path: 'employee/find/:id', component: EmployeeInfoComponent },
-  { path: 'employee/add', component: EmployeeFormComponent },
-  { path: 'employee', component: EmployeesComponent },
+  { path: 'employee/update/:id', component: EmployeeFormComponent, canActivate: [AuthGuardGuard] },
+  { path: "employee/search/:subsname", component: EmployeesComponent, canActivate: [AuthGuardGuard] },
+  { path: 'employee/jobs/:jobTitle', component: EmployeesComponent, canActivate: [AuthGuardGuard] },
+  { path: 'employee/find/:id', component: EmployeeInfoComponent, canActivate: [AuthGuardGuard] },
+  { path: 'employee/add', component: EmployeeFormComponent, canActivate: [AuthGuardGuard] },
+  { path: 'employee', component: EmployeesComponent, canActivate: [AuthGuardGuard] },
   //home
   { path: 'home', component: HomeComponent },
   //authentication routes
-  { path: 'login', component: LoginMenuComponent },
-  { path: "signup", component: SignupComponent },
-  { path: "confirm-signup", component: LoginconfirmationComponent },
-  { path: "forgot-password", component: ForgotpasswordComponent },
-  { path: "reset-password", component: ResetpasswordComponent },
-  { path: "change-password", component: ChangepasswordComponent },
+  { path: 'login', component: LoginMenuComponent, canActivate: [AuthGuardGuard] },
+  { path: "signup", component: SignupComponent, canActivate: [AuthGuardGuard] },
+  { path: "confirm-signup", component: LoginconfirmationComponent, canActivate: [AuthGuardGuard] },
+  { path: "forgot-password", component: ForgotpasswordComponent, canActivate: [AuthGuardGuard] },
+  { path: "reset-password", component: ResetpasswordComponent, canActivate: [AuthGuardGuard] },
+  { path: "change-password", component: ChangepasswordComponent, canActivate: [AuthGuardGuard] },
   //profile routes
-  { path: "profile", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent, canActivate: [AuthGuardGuard] },
   { path: '**', redirectTo: "home", pathMatch: "full" }
 ];
 
@@ -94,7 +95,7 @@ const routes: Routes = [
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService, AmplifyService, UserService, ProfileService],
+  providers: [EmployeeService, AmplifyService, UserService, ProfileService, AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
