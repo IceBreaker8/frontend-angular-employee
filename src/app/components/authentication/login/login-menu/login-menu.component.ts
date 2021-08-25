@@ -48,16 +48,12 @@ export class LoginMenuComponent implements OnInit {
     let password: string = this.myForm.get("password")?.value;
     try {
       const user = await Auth.signIn(username, password).then(user => {
-        //console.log(user);
-        if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-          this.completeNewPassword(username, password);
-        }
         this.route.navigate(["/employee"]);
       }
 
       );
     } catch (error) {
-      alert(error.message);
+      //alert(error.message);
       if (error["code"] == "UserNotConfirmedException") {
         let username = this.myForm.get("name")?.value;
         let password = this.myForm.get("password")?.value;
@@ -67,30 +63,6 @@ export class LoginMenuComponent implements OnInit {
       }
     }
   }
-
-  completeNewPassword(username: string, password: string) {
-    Auth.signIn(username, password)
-      .then(user => {
-        if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-          const { requiredAttributes } = user.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
-          Auth.completeNewPassword(
-            user,               // the Cognito User Object
-            password,       // the new password
-
-          ).then(user => {
-            // at this time the user is logged in if no MFA required
-            console.log(user);
-          }).catch(e => {
-            alert(e.message);
-          });
-        } else {
-          // other situations
-        }
-      }).catch(e => {
-        alert(e.message);
-      });
-  }
-
 
   // FORM STYLING FUNCTIONS
 

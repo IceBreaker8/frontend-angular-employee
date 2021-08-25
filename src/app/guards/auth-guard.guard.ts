@@ -21,23 +21,23 @@ export class AuthGuardGuard implements CanActivate {
       //alert("faf");
       return Auth.currentAuthenticatedUser().then(
         res => {
-          //console.log(res);
+          //alert("==1==>" + res);
           this.route.navigate([""]);
           return false;
         },
         error => {
-          //console.log(error);
+          //alert("==2==>" + error);
           return true;
         }
       )
     } else {
       return Auth.currentAuthenticatedUser().then(
         res => {
-          //console.log(res);
+          //alert("===3=>" + res);
           return true;
         },
         error => {
-          //console.log(error);
+          //alert("===4=>" + error);
           this.route.navigate([""]);
           return false;
         }

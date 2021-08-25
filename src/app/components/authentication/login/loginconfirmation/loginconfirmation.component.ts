@@ -67,13 +67,8 @@ export class LoginconfirmationComponent implements OnInit {
   async loginUser(username: string, password: string) {
     try {
       const user = await Auth.signIn(username, password).then(user => {
-        //console.log(user);
-        if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-          this.completeNewPassword(username, password);
-        }
         this.route.navigate(["/employee"]);
       }
-
       );
     } catch (error) {
       if (error["code"] == "UserNotConfirmedException") {
@@ -82,28 +77,6 @@ export class LoginconfirmationComponent implements OnInit {
     }
   }
 
-  completeNewPassword(username: string, password: string) {
-    Auth.signIn(username, password)
-      .then(user => {
-        if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-          const { requiredAttributes } = user.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
-          Auth.completeNewPassword(
-            user,               // the Cognito User Object
-            password,       // the new password
-
-          ).then(user => {
-            // at this time the user is logged in if no MFA required
-            //console.log(user);
-          }).catch(e => {
-
-          });
-        } else {
-          // other situations
-        }
-      }).catch(e => {
-
-      });
-  }
 
   async resendConfirmationCode() {
     let username = this.myForm.get("name")?.value;

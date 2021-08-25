@@ -16,15 +16,9 @@ export let browserRefresh = false;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-  username?: undefined;
-  //loaded = false;
   title = "employeeamangerapp"
-  //detect reloading page
-  //subscription: Subscription;
 
-  constructor(public amplifyService: AmplifyService, private route: Router,
-    public authSession: AuthSessionService, private userService: UserService) {
+  constructor() {
     //testing user service
 
 
