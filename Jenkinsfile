@@ -1,26 +1,11 @@
 pipeline {
   agent any
+  tools {nodejs "node"}
   stages {
-    stage('npm package') {
+    stage('npm') {
       steps {
         bat 'npm install'
       }
     }
-
-    stage('Build') {
-      steps {
-        sh 'ng build'
-      }
-    }
-
-    stage('Test') {
-      steps {
-        sh 'ng test'
-      }
-    }
-
-  }
-  environment {
-    nodejs = 'node'
   }
 }
