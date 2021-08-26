@@ -1,9 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('test') {
+    stage('Build') {
       steps {
-        echo 'hello world'
+        sh 'ng build'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'ng test'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deployed'
       }
     }
 
