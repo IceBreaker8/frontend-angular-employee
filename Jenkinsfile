@@ -20,4 +20,7 @@ pipeline {
     }
 
   }
+  environment {
+    nodejs = 'node'
+  }
 }
