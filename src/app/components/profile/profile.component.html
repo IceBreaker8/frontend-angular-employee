@@ -1,3 +1,125 @@
-<button class="btn btn-success">Hello, {{ username }}</button>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+<div class="container card" style="width: 40%;margin-left: 30%;">
+  <div class="card-body">
+    <h2 style="text-align: center;">{{ username }}</h2>
+    <hr>
+      
+     
+      <span style="font-size: larger;color: red;font-weight: 600;">Position: </span>
+
+    
+    
+      <div style="display: inline-flex;margin-top: 4px;">
+        <span  *ngIf="!editMode; else position1">{{ profile?.position }}</span> 
+        <ng-template  #position1>
+          <input class="form-control" type="text"
+              placeholder="Enter position" style="width: 25rem;margin-left: 3.2%;" formControlName="position">
+        </ng-template>
+      </div>
+      
+      <br>
+      <span style="font-size: larger;color: red;font-weight: 600;">Age: </span>
+ 
+      <div style="display: inline-flex;margin-top: 4px;">
+        <span  *ngIf="!editMode; else position2">{{ profile?.age == 0 ? "" : profile?.age }}</span> 
+        <ng-template  #position2>
+          <input class="form-control" type="text"
+              placeholder="Enter Age" style="width: 27.2rem;margin-left: 11.2%;" formControlName="age">
+        </ng-template>
+      </div>
 <br>
-<button class="btn btn-warning">Your email is: {{ email }}</button>
+
+      <span style="font-size: larger;color: red;font-weight: 600;">Phone: </span>
+ 
+      <div style="display: inline-flex;margin-top: 4px;">
+        <span  *ngIf="!editMode; else position3">{{ profile?.phone }}</span> 
+        <ng-template  #position3>
+          <input class="form-control" type="text"
+              placeholder="Enter Phone" style="width: 26rem;margin-left: 7%;" formControlName="phone">
+        </ng-template>
+      </div>
+
+<br>
+
+      <span style="font-size: larger;color: red;font-weight: 600;">Company: </span>
+ 
+      <div style="display: inline-flex;margin-top: 4px;">
+        <span  *ngIf="!editMode; else position4">{{ profile?.company }}</span> 
+        <ng-template  #position4>
+          <input class="form-control" type="text"
+              placeholder="Enter company name" style="width: 24.26rem;" formControlName="company">
+        </ng-template>
+      </div>
+
+<br>
+
+      <span style="font-size: larger;color: red;font-weight: 600;">Email: </span>
+ 
+      <div style="display: inline-flex;margin-top: 4px;">
+        <span >{{ email }}</span> 
+        
+      </div>
+      <br>
+    <button (click)="toggleEditMode()" [hidden]="editMode" style="float: right;" class="btn btn-success">Edit</button>
+    <button (click)="toggleEditMode()" [hidden]="!editMode" style="float: right;" class="btn btn-danger">Cancel</button>
+    <button (click)="toggleEditMode()" (click)="confirm()" 
+    [hidden]="!editMode" style="float: right;margin-right: 6px;"
+     class="btn btn-success">Confirm</button>
+  </div>
+</div>
+<br>
+
+
+</form>
+
+<div [hidden]="!(empNumberLoad && perJobCount)" id="fadingAnimation">
+  <div class="container" style="margin-top: 1%;text-align: center;">
+    <div class="row">
+      <div class="col">
+          <div class="container card">
+              <div class="card-body">
+                  <h5 class="card-title">Number of employees</h5>
+                  <hr>
+                  <div>
+                    <h1 style="color: green;"> {{ empCount }} </h1>
+                  </div>
+                
+              </div>
+          </div>
+      </div>
+      
+      <div class="col">
+        <div class="container card">
+              <div class="card-body">
+                  <h5 class="card-title">Number of employees per Job</h5>
+                  <hr>
+                  <div>
+                    <h1 style="color:green;">{{ perJobNum }}</h1>
+                  </div>
+                  
+                  <select id="selectBox" #select (click)="selectJob(select)" class="form-select form-select-lg" style="width: 30%;margin-top: -13%;margin-left:58%;
+                  position: absolute; font-size: medium;">
+                    <option selected>All</option>
+                    <option value="1">Java</option>
+                    <option value="2">Dart</option>
+                    <option value="3">C++</option>
+                    <option value="4">JavaScript</option>
+                    <option value="5">Python</option>
+
+                  </select>
+                  
+              </div>
+          </div>
+      </div>
+      <div class="col">
+        <div class="container card">
+              <div class="card-body">
+                  <h5 class="card-title">Number of Jobs</h5>
+                  <hr>
+                  <h1 style="color: green;">5</h1>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

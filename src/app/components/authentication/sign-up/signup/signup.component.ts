@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { AuthSessionService } from 'src/app/services/auth-session.service';
 import { User } from 'src/app/components/user';
 import { UserService } from 'src/app/services/user.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { Profile } from 'src/app/components/profile';
 
 @Component({
   selector: 'app-signup',
@@ -21,9 +23,10 @@ export class SignupComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+  constructor(private fb: FormBuilder, private route: Router,
     private authSession: AuthSessionService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
@@ -89,9 +92,15 @@ export class SignupComponent implements OnInit {
 
       this.userService.addUser({ username, email }).subscribe(
         res => {
-          //console.log(res);
+
+          this.profileService.addProfile(email, {}).subscribe(
+            res => {
+
+            }
+          )
         }
       );
+
       this.route.navigate(["/confirm-signup"]);
     } catch (error) {
       //check if user already exists for example
