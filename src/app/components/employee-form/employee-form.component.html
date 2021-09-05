@@ -19,11 +19,15 @@
       <small #ref8>Please enter an email</small>
     </div>
     <!-- Job title -->
-    <div (keyup)="inputOnChange(ref8,ref9,ref10,ref11,'jobTitle')" style="margin-top: 8px;" class="form-group">
-      <label #ref8 for="jobTitle">Job Title:</label>
-      <input #ref9 type="text" class="form-control"placeholder="Enter job title" formControlName="jobTitle">
-      <small #ref10>Please enter a job title</small>
-      <small #ref11>Please enter a job</small>
+    <div style="margin-top: 8px;" class="form-group">
+      <label for="jobTitle">Job Title:</label>
+      <select class="form-select" aria-label="Default select example" formControlName="jobTitle" style="width: 90%;">
+        <option selected="true" value="Java">Java</option>
+        <option value="Dart">Dart</option>
+        <option value="C++">C++</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+      </select>
     </div>
     <!-- Phone number -->
     <div (keyup)="inputOnChange(ref12,ref13,ref14,ref15,'phone')" style="margin-top: 8px;" class="form-group">

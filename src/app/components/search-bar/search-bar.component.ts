@@ -17,6 +17,8 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+
   }
 
 
@@ -29,8 +31,6 @@ export class SearchBarComponent implements OnInit {
       || this.route.url.includes("/employee/jobs/")) {
       this.route.navigate([`/employee/search/${searchWord}`]);
     }
-
-
   }
   public clear() {
     if (this.route.url == "/employee" || this.route.url.includes("/employee/search/")
