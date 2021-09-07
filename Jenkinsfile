@@ -3,7 +3,19 @@ pipeline {
   stages {
     stage('npm') {
       steps {
-        bat 'npm install'
+        sh 'npm install'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'npm build'
+      }
+    }
+
+    stage('Serve') {
+      steps {
+        sh 'npm serve --open'
       }
     }
 
