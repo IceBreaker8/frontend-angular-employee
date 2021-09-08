@@ -15,7 +15,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'ng test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false'
+        sh 'npm test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false'
       }
     }
 
