@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('error') {
       steps {
-        sh 'npm --version'
+        sh 'node --version'
       }
     }
 
