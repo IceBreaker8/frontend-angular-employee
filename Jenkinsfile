@@ -15,7 +15,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm test'
+        sh 'npm test --watch=false --progress=false --browsers=ChromeHeadless --code-coverage --source-map=false'
       }
     }
 
