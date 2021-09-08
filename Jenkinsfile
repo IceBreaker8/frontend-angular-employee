@@ -15,7 +15,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'npm test'
+        sh 'npx ng test --no-watch --code-coverage'
       }
     }
 
