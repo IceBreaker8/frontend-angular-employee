@@ -1,11 +1,23 @@
 pipeline {
   agent any
-  tools {nodejs "node"}
   stages {
     stage('npm') {
       steps {
-        bat 'npm install'
+        sh 'npm install'
       }
     }
+
+    stage('Build') {
+      steps {
+        sh 'npm build'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'npx ng test --no-watch --code-coverage'
+      }
+    }
+
   }
 }
