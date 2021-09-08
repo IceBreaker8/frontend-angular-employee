@@ -1,9 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('npm') {
       steps {
-        sh 'node --version'
+        sh 'npm install'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'npm build'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'npm test'
       }
     }
 
