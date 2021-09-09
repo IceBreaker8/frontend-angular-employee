@@ -9,19 +9,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'npm build'
+        sh 'npm run build'
       }
     }
 
     stage('Test') {
       steps {
         sh 'npm run test-headless'
-      }
-    }
-
-    stage('Prod') {
-      steps {
-        sh 'ng build --prod'
       }
     }
 
