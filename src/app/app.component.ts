@@ -18,28 +18,7 @@ export let browserRefresh = false;
 export class AppComponent implements OnInit {
   title = "employeeamangerapp"
 
-  constructor() {
-    //testing user service
-
-
-    /*
-        //detect reloading: empty authSession service and change the route
-        this.subscription = route.events.subscribe((event) => {
-          if (event instanceof NavigationStart) {
-            browserRefresh = !route.navigated;
-            let routeString = event.url;
-            if ((browserRefresh && routeString.includes("/confirm-signup")) ||
-              (browserRefresh && routeString.includes("/reset-password"))) {
-              this.authSession.setPassword("");
-              this.authSession.setUsername("");
-              window.location.href = "";
-    
-            }
-    
-          }
-        });
-    */
-  }
+  constructor() { }
   ngOnInit() {
 
   }
