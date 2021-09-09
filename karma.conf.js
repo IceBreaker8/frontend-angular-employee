@@ -39,10 +39,15 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
-        ChromeHeadlessNoSandbox: {
-            base: 'ChromeHeadless',
-            flags: ['--no-sandbox']
-        }
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--headless',
+          '--disable-gpu',
+          // Without a remote debugging port, Google Chrome exits immediately.
+          '--remote-debugging-port=9222',
+        ],
+      }
     },
     singleRun: true,
     restartOnFileChange: true
