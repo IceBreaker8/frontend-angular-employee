@@ -18,11 +18,11 @@ export class LogoutButtonComponent implements OnInit {
     try {
       await Auth.signOut().then
         (res => {
-          this.route.navigate([""]);
+          this.route.navigate([''], { replaceUrl: true });
 
         });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
     }
   }
 

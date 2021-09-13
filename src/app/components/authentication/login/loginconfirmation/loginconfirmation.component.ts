@@ -21,6 +21,10 @@ export class LoginconfirmationComponent implements OnInit {
 
   }
 
+  redirect() {
+    this.route.navigate([''], { replaceUrl: true });
+  }
+
   ngOnInit(): void {
     this.myForm = this.fb.group({
       name: ["", [
@@ -34,7 +38,7 @@ export class LoginconfirmationComponent implements OnInit {
 
     });
     if (this.authSession.getUsername() == "") {
-      window.location.href = "";
+      this.redirect();
       return;
     }
     if (this.authSession.getUsername() != "") {

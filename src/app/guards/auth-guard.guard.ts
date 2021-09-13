@@ -22,7 +22,7 @@ export class AuthGuardGuard implements CanActivate {
       return Auth.currentAuthenticatedUser().then(
         res => {
           //alert("==1==>" + res);
-          this.route.navigate([""]);
+          this.route.navigate([''], { replaceUrl: true });
           return false;
         },
         error => {
@@ -38,7 +38,7 @@ export class AuthGuardGuard implements CanActivate {
         },
         error => {
           //alert("===4=>" + error);
-          this.route.navigate([""]);
+          this.route.navigate([''], { replaceUrl: true });
           return false;
         }
       )

@@ -15,13 +15,17 @@ export class NavbarComponent implements OnInit {
 
   loggedIn?: boolean;
   ngOnInit(): void {
+    try {
+      this.amplifyService.authStateChange$.subscribe(
+        res => {
+          this.loggedIn = res.state == "signedIn" ? true : false;
+          loggedIn = res.state == "signedIn" ? true : false;
+        }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
 
-    this.amplifyService.authStateChange$.subscribe(
-      res => {
-        this.loggedIn = res.state == "signedIn" ? true : false;
-        loggedIn = res.state == "signedIn" ? true : false;
-      }
-    );
   }
 
 

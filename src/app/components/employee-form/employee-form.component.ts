@@ -50,8 +50,12 @@ export class EmployeeFormComponent implements OnInit {
                 }
               )
             }
+          }, error => {
+
           }
         )
+      }, error => {
+
       }
     )
     //

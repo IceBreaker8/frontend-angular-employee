@@ -55,6 +55,8 @@ export class EmployeesComponent implements OnInit {
 
 
             )
+          }, error => {
+            console.log(error.message);
           }
         )
       }

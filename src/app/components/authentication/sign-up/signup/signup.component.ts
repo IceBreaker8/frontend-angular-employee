@@ -96,8 +96,12 @@ export class SignupComponent implements OnInit {
           this.profileService.addProfile(email, {}).subscribe(
             res => {
 
+            }, error => {
+
             }
           )
+        }, error => {
+
         }
       );
 

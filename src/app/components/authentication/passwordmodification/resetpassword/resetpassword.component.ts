@@ -14,6 +14,9 @@ export class ResetpasswordComponent implements OnInit {
   myForm!: FormGroup;
 
 
+  redirect() {
+    this.route.navigate([''], { replaceUrl: true });
+  }
 
   constructor(private fb: FormBuilder, private route: Router,
     private authSession: AuthSessionService) { }
@@ -35,7 +38,7 @@ export class ResetpasswordComponent implements OnInit {
 
     });
     if (this.authSession.getUsername() == "") {
-      window.location.href = "";
+      this.redirect();
       return;
     }
     this.myForm = this.fb.group({

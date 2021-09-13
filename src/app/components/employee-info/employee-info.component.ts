@@ -34,6 +34,8 @@ export class EmployeeInfoComponent implements OnInit {
           )
         })
 
+      }, error => {
+        //console.log(error.message);
       }
     )
 

@@ -37,29 +37,28 @@ export class ProfileComponent implements OnInit {
     //
     //
     this.initForm();
-    try {
-      Auth.currentAuthenticatedUser().then(
+    Auth.currentAuthenticatedUser().then(
+      res => {
+        this.username = res.username;
+        this.email = res.attributes.email;
+        this.getEmployeesNumber();
+        this.initJobCount();
+      }
+    )
+      .then(
         res => {
-          this.username = res.username;
-          this.email = res.attributes.email;
-          this.getEmployeesNumber();
-          this.initJobCount();
-        }
-      )
-        .then(
-          res => {
 
-            this.profileService.getProfileByUserEmail(this.email!).subscribe(
-              (profile: Profile) => {
-                this.profile = profile;
-                //console.log(this.profile);
-              }
-            )
-          }
-        )
-    } catch (err) {
-      alert(err.message);
-    }
+          this.profileService.getProfileByUserEmail(this.email!).subscribe(
+            (profile: Profile) => {
+              this.profile = profile;
+              //console.log(this.profile);
+            }
+          )
+        }
+      ).catch(
+
+      )
+
 
 
   }
