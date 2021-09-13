@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AmplifyService } from 'aws-amplify-angular';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Auth } from 'aws-amplify';
 import { Router } from '@angular/router';
@@ -17,10 +15,25 @@ export class ResetpasswordComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+  constructor(private fb: FormBuilder, private route: Router,
     private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
+    this.myForm = this.fb.group({
+      name: ["", [
+        Validators.required,
+
+      ]],
+      confirmationCode: ["", [
+        Validators.required,
+      ]],
+      password: ["", [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(20)
+      ]]
+
+    });
     if (this.authSession.getUsername() == "") {
       window.location.href = "";
       return;

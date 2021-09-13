@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AmplifyService } from 'aws-amplify-angular';
 import { ForgotpasswordComponent } from './forgotpassword.component';
 
 describe('ForgotpasswordComponent', () => {
@@ -8,9 +10,11 @@ describe('ForgotpasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgotpasswordComponent ]
+      imports: [ReactiveFormsModule, RouterTestingModule],
+      providers: [AmplifyService],
+      declarations: [ForgotpasswordComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

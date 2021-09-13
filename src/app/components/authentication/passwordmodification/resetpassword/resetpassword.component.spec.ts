@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AmplifyService } from 'aws-amplify-angular';
 import { ResetpasswordComponent } from './resetpassword.component';
 
 describe('ResetpasswordComponent', () => {
@@ -8,9 +10,11 @@ describe('ResetpasswordComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResetpasswordComponent ]
+      imports: [ReactiveFormsModule, RouterTestingModule],
+      providers: [AmplifyService],
+      declarations: [ResetpasswordComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

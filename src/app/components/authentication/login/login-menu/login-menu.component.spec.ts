@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginMenuComponent } from './login-menu.component';
+import { AmplifyService } from 'aws-amplify-angular';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginMenuComponent', () => {
   let component: LoginMenuComponent;
@@ -7,6 +10,8 @@ describe('LoginMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, RouterTestingModule],
+      providers: [AmplifyService],
       declarations: [LoginMenuComponent]
     })
       .compileComponents();

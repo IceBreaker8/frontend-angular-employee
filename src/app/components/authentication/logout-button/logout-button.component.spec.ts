@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms'
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { LogoutButtonComponent } from './logout-button.component';
 
 describe('LogoutButtonComponent', () => {
@@ -8,9 +10,11 @@ describe('LogoutButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LogoutButtonComponent ]
+      imports: [RouterTestingModule],
+      providers: [],
+      declarations: [LogoutButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

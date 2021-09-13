@@ -22,6 +22,17 @@ export class LoginconfirmationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.myForm = this.fb.group({
+      name: ["", [
+        Validators.required
+
+      ]],
+      confirmationCode: ["", [
+        Validators.required,
+
+      ]]
+
+    });
     if (this.authSession.getUsername() == "") {
       window.location.href = "";
       return;
