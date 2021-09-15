@@ -18,6 +18,9 @@ pipeline {
         sh 'npm run test-headless'
       }
     }
+    stage('artifacts to s3') {
+      sh 'aws s3 sync dist/frontend-angular-employee s3://employee-front-s3 --delete'
+   }
 
   }
 }
