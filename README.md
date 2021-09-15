@@ -41,3 +41,10 @@ https://docs.amplify.aws/start/q/integration/angular
 
 https://docs.amplify.aws/ui/auth/authenticator/q/framework/angular#installation
 
+## Install AWS CLI
+
+https://aws.amazon.com/cli/
+
+## Deploy to S3
+
+`aws sync s3 sync dist/<project> s3://<bucketName>`
