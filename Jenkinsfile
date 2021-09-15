@@ -7,12 +7,16 @@ pipeline {
         sh 'npm install'
       }
     }
+    stage('Unit Tests'){
+      steps{
+        sh 'npm run test-headless'
+    }
     stage('build'){
       steps{
         sh 'npm run build'
       }
     }
-
+    
 
     
     stage('artifacts to s3') {
