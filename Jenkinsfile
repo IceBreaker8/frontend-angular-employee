@@ -10,6 +10,7 @@ pipeline {
     stage('Unit Tests'){
       steps{
         sh 'npm run test-headless'
+      }
     }
     stage('build'){
       steps{
