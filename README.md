@@ -40,10 +40,14 @@ https://medium.com/workfall/how-to-build-an-angular-authentication-application-u
 https://docs.amplify.aws/start/q/integration/angular
 
 https://docs.amplify.aws/ui/auth/authenticator/q/framework/angular#installation
-# Deployment
+# ========= Deployment ==========
 ## Install AWS CLI
 
 https://aws.amazon.com/cli/
+
+## Configure AWS CLI
+
+`>aws configure`
 
 ## Deploy to S3
 
