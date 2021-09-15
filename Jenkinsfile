@@ -13,7 +13,7 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Chrome Unit Tests') {
       steps {
         sh 'npm run test-headless'
       }
