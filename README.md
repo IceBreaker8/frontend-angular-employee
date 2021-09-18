@@ -52,3 +52,9 @@ https://aws.amazon.com/cli/
 ## Deploy to S3
 
 `aws sync s3 sync dist/<project> s3://<bucketName>`
+
+## Enable CORS in S3
+
+## Cloudfront not updating from S3
+
+https://stackoverflow.com/questions/30154461/aws-cloudfront-not-updating-on-update-of-files-in-s3
