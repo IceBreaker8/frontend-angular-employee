@@ -7,15 +7,21 @@ pipeline {
       }
     }
 
+    stage('Unit Tests') {
+      steps {
+        sh 'npm run test-headless'
+      }
+    }
+
     stage('Build') {
       steps {
         sh 'npm run build'
       }
     }
 
-    stage('Chrome Unit Tests') {
+    stage('Deploy to S3') {
       steps {
-        sh 'npm run test-headless'
+        sh 'aws s3 sync dist/employeeamangerapp/ s3://employee-front-s3 --delete'
       }
     }
 
