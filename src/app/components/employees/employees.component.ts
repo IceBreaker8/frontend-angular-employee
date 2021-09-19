@@ -38,17 +38,17 @@ export class EmployeesComponent implements OnInit {
                 const hasJobTitle: boolean = this.route.snapshot.paramMap.has("jobTitle");
                 const hasName: boolean = this.route.snapshot.paramMap.has("subsname");
                 if (hasJobTitle) {
-                  console.log("job title");
+                  //console.log("job title");
                   this.jobTitle = this.route.snapshot.params["jobTitle"];
                   this.getEmployeesByJobTitle(this.jobTitle);
 
                 } else if (hasName) {
-                  console.log("subname");
+                  //console.log("subname");
                   this.subsname = this.route.snapshot.params["subsname"];
                   this.getEmployeesByNameContaining(this.subsname);
 
                 } else {
-                  console.log("all employees");
+                  //console.log("all employees");
                   this.getEmployees();
                 }
               }
@@ -56,7 +56,7 @@ export class EmployeesComponent implements OnInit {
 
             )
           }, error => {
-            console.log(error.message);
+            //console.log(error.message);
           }
         )
       }

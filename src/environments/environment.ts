@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://d1bnwtlx1v9fsw.cloudfront.net' //
+  apiBaseUrl: 'https://d1bnwtlx1v9fsw.cloudfront.net'
 };
 
 /*
