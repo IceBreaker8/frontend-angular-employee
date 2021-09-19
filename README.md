@@ -55,10 +55,11 @@ https://aws.amazon.com/cli/
 
 ## Enable CORS in S3
 
-## Cloudfront not updating from S3
+## Cloudfront not updating from S3 (Invalidation)
 
 https://stackoverflow.com/questions/30154461/aws-cloudfront-not-updating-on-update-of-files-in-s3
 
 ## Cloudfront secure EC2 elastic beanstalk
 
 https://www.youtube.com/watch?v=V8vR7rA0ubs
+
