@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://employeemanager.eu-west-2.elasticbeanstalk.com'
+  apiBaseUrl: 'https://d1bnwtlx1v9fsw.cloudfront.net'
 };
 
 /*
