@@ -53,7 +53,7 @@ export class LoginMenuComponent implements OnInit {
 
       );
     } catch (error) {
-      //alert(error.message);
+      alert(error.message);
       if (error["code"] == "UserNotConfirmedException") {
         let username = this.myForm.get("name")?.value;
         let password = this.myForm.get("password")?.value;
