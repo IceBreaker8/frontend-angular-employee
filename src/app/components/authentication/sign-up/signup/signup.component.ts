@@ -75,14 +75,14 @@ export class SignupComponent implements OnInit {
     try {
       //check if user exists
 
-      const user = await Auth.signUp({
+      const { user } = await Auth.signUp({
         username,
         password,
         attributes: {
           email
 
         }
-      }).catch(err => { });
+      });
       this.authSession.setPassword(password);
       this.authSession.setUsername(username);
       //call user service
