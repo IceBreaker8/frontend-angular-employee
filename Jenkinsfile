@@ -21,7 +21,7 @@ pipeline {
 
     stage('Deploy to S3') {
       steps {
-        sh 'aws s3 sync dist/employeeamangerapp/ s3://employee-front-s3 --delete'
+        sh 'aws s3 sync dist/employeeamangerapp/ s3://employee-front-s3'
       }
     }
 
