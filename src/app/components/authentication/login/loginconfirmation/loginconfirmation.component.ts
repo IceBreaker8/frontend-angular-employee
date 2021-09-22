@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
-import { AmplifyService } from 'aws-amplify-angular';
 import { AuthSessionService } from 'src/app/services/auth-session.service';
 
 @Component({
@@ -69,7 +68,7 @@ export class LoginconfirmationComponent implements OnInit {
 
   async confirmSignUp(username: string, code: string) {
     try {
-      await Auth.confirmSignUp(username, code);
+      await Auth.confirmSignUp(username, code).catch(error => { });
       this.loginUser(this.authSession.getUsername()!, this.authSession.getPassword()!);
       this.authSession.setUsername("");
       this.authSession.setPassword("");
@@ -84,7 +83,7 @@ export class LoginconfirmationComponent implements OnInit {
       const user = await Auth.signIn(username, password).then(user => {
         this.route.navigate(["/employee"]);
       }
-      );
+      ).catch(err => { });
     } catch (error) {
       if (error["code"] == "UserNotConfirmedException") {
         this.route.navigate(["/confirm-signup"]);
@@ -96,7 +95,7 @@ export class LoginconfirmationComponent implements OnInit {
   async resendConfirmationCode() {
     let username = this.myForm.get("name")?.value;
     try {
-      await Auth.resendSignUp(username);
+      await Auth.resendSignUp(username).catch(err => { });
       alert("Code re-sent!");
     } catch (err) {
       //console.log('error resending code: ', err);

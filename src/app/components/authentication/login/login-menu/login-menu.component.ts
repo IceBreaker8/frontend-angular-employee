@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AmplifyService } from 'aws-amplify-angular';
-
-import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Auth } from 'aws-amplify';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 import { AuthSessionService } from 'src/app/services/auth-session.service';
+
 
 @Component({
   selector: 'app-login-menu',
@@ -20,7 +18,7 @@ export class LoginMenuComponent implements OnInit {
 
 
 
-  constructor(private auth: AmplifyService, private fb: FormBuilder, private route: Router,
+  constructor(private fb: FormBuilder, private route: Router,
     private authSession: AuthSessionService) { }
 
   ngOnInit(): void {
@@ -51,7 +49,9 @@ export class LoginMenuComponent implements OnInit {
         this.route.navigate(["/employee"]);
       }
 
-      );
+      ).catch(error => {
+
+      });
     } catch (error) {
       alert(error.message);
       if (error["code"] == "UserNotConfirmedException") {

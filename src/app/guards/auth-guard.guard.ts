@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Auth } from 'aws-amplify';
-import { AmplifyService } from 'aws-amplify-angular';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

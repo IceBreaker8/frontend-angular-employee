@@ -51,7 +51,7 @@ export class EmployeesComponent implements OnInit {
                   //console.log("all employees");
                   this.getEmployees();
                 }
-              }
+              }, err => { }
 
 
             )

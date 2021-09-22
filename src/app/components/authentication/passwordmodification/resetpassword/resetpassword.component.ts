@@ -66,7 +66,7 @@ export class ResetpasswordComponent implements OnInit {
       const user = await Auth.signIn(username, password).then(user => {
         this.route.navigate(["/employee"]);
       }
-      );
+      ).catch(err => { });
     } catch (error) {
       alert(error.message);
 

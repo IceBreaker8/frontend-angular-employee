@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AmplifyService } from 'aws-amplify-angular';
-
-import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Auth } from 'aws-amplify';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 import { AuthSessionService } from 'src/app/services/auth-session.service';
-import { User } from 'src/app/components/user';
-import { UserService } from 'src/app/services/user.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Profile } from 'src/app/components/profile';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -79,14 +75,14 @@ export class SignupComponent implements OnInit {
     try {
       //check if user exists
 
-      const { user } = await Auth.signUp({
+      const user = await Auth.signUp({
         username,
         password,
         attributes: {
           email
 
         }
-      });
+      }).catch(err => { });
       this.authSession.setPassword(password);
       this.authSession.setUsername(username);
       //call user service

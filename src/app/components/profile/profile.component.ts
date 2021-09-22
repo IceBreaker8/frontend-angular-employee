@@ -1,9 +1,6 @@
-import { keyframes } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Auth } from 'aws-amplify';
-import { AmplifyService } from 'aws-amplify-angular';
-import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { UserService } from 'src/app/services/user.service';

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AmplifyService } from 'aws-amplify-angular';
-
-import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Auth } from 'aws-amplify';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthSessionService } from 'src/app/services/auth-session.service';
+import { Auth } from 'aws-amplify';
+
 
 @Component({
   selector: 'app-changepassword',
@@ -40,7 +37,7 @@ export class ChangepasswordComponent implements OnInit {
       const user = await Auth.signIn(username, password).then(user => {
 
       }
-      );
+      ).catch(err => { });
     } catch (error) {
       alert(error.message);
 

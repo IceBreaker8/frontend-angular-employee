@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 
 export var loggedIn: boolean;

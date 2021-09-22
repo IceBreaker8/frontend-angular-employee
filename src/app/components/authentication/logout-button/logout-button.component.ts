@@ -20,7 +20,7 @@ export class LogoutButtonComponent implements OnInit {
         (res => {
           this.route.navigate([''], { replaceUrl: true });
 
-        });
+        }).catch(err => { });
     } catch (error) {
       //console.log(error.message);
     }
