@@ -8,22 +8,23 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./logout-button.component.css']
 })
 export class LogoutButtonComponent implements OnInit {
-
-  constructor(private route: Router) { }
+  constructor(private route: Router) {}
 
   ngOnInit(): void {
+    // do nothing
   }
 
   async signOut() {
     try {
-      await Auth.signOut().then
-        (res => {
+      await Auth.signOut()
+        .then((res) => {
           this.route.navigate([''], { replaceUrl: true });
-
-        }).catch(err => { });
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
     } catch (error) {
       //console.log(error.message);
     }
   }
-
 }

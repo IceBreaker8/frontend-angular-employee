@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 import { LogoutButtonComponent } from './logout-button.component';
 
 describe('LogoutButtonComponent', () => {
@@ -11,8 +11,7 @@ describe('LogoutButtonComponent', () => {
       imports: [RouterTestingModule],
       providers: [],
       declarations: [LogoutButtonComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

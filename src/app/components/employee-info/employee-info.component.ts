@@ -13,32 +13,35 @@ import { User } from '../user';
   styleUrls: ['./employee-info.component.css']
 })
 export class EmployeeInfoComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute, private service: EmployeeService,
-    private userService: UserService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private service: EmployeeService,
+    private userService: UserService
+  ) {}
 
   employee!: Employee;
   userId?: number;
   ngOnInit(): void {
     Auth.currentAuthenticatedUser().then(
       (res) => {
-        this.userService.getUserByEmail(res.attributes.email).subscribe(res => {
-          this.userId = res.id;
-          let id: number = this.route.snapshot.params["id"];
-          this.service.getEmployeeById(this.userId!, id).subscribe(
-            (response: Employee) => {
-              this.employee = response;
-            }, (error: HttpErrorResponse) => {
-              alert(error);
-            }
-          )
-        })
-
-      }, error => {
+        this.userService
+          .getUserByEmail(res.attributes.email)
+          .subscribe((res) => {
+            this.userId = res.id;
+            const id: number = this.route.snapshot.params['id'];
+            this.service.getEmployeeById(this.userId!, id).subscribe(
+              (response: Employee) => {
+                this.employee = response;
+              },
+              (error: HttpErrorResponse) => {
+                alert(error);
+              }
+            );
+          });
+      },
+      (error) => {
         //console.log(error.message);
       }
-    )
-
+    );
   }
-
 }

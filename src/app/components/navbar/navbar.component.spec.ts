@@ -11,8 +11,7 @@ describe('NavbarComponent', () => {
       imports: [],
       providers: [AmplifyService],
       declarations: [NavbarComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

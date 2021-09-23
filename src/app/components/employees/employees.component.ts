@@ -14,88 +14,86 @@ import { User } from '../user';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-
   employees!: Employee[];
   userId?: number;
   //cm
 
-  constructor(private employeeService: EmployeeService,
-    private route: ActivatedRoute, public authSession: AuthSessionService,
-    private userService: UserService) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private route: ActivatedRoute,
+    public authSession: AuthSessionService,
+    private userService: UserService
+  ) {}
 
-  jobTitle: string = "";
-  subsname: string = "";
+  jobTitle = '';
+  subsname = '';
 
   ngOnInit() {
-    Auth.currentAuthenticatedUser().then(
-      res => {
-        this.userService.getUserByEmail(res.attributes.email).subscribe(
-          (res: User) => {
-            this.userId = res.id;
-            this.route.params.subscribe(
-              () => {
-
-                const hasJobTitle: boolean = this.route.snapshot.paramMap.has("jobTitle");
-                const hasName: boolean = this.route.snapshot.paramMap.has("subsname");
-                if (hasJobTitle) {
-                  //console.log("job title");
-                  this.jobTitle = this.route.snapshot.params["jobTitle"];
-                  this.getEmployeesByJobTitle(this.jobTitle);
-
-                } else if (hasName) {
-                  //console.log("subname");
-                  this.subsname = this.route.snapshot.params["subsname"];
-                  this.getEmployeesByNameContaining(this.subsname);
-
-                } else {
-                  //console.log("all employees");
-                  this.getEmployees();
-                }
-              }, err => { }
-
-
-            )
-          }, error => {
-            //console.log(error.message);
-          }
-        )
-      }
-    )
-
-
+    Auth.currentAuthenticatedUser().then((res) => {
+      this.userService.getUserByEmail(res.attributes.email).subscribe(
+        (res: User) => {
+          this.userId = res.id;
+          this.route.params.subscribe(
+            () => {
+              const hasJobTitle: boolean =
+                this.route.snapshot.paramMap.has('jobTitle');
+              const hasName: boolean =
+                this.route.snapshot.paramMap.has('subsname');
+              if (hasJobTitle) {
+                //console.log("job title");
+                this.jobTitle = this.route.snapshot.params['jobTitle'];
+                this.getEmployeesByJobTitle(this.jobTitle);
+              } else if (hasName) {
+                //console.log("subname");
+                this.subsname = this.route.snapshot.params['subsname'];
+                this.getEmployeesByNameContaining(this.subsname);
+              } else {
+                //console.log("all employees");
+                this.getEmployees();
+              }
+            },
+            (err) => {
+              //console.log(err.message);
+            }
+          );
+        },
+        (error) => {
+          //console.log(error.message);
+        }
+      );
+    });
   }
-
 
   public getEmployeesByNameContaining(substring: string) {
-
-    this.employeeService.getEmployeesByNameContaining(this.userId!, substring).subscribe(
-      (response: Employee[]) => {
-        this.employees = response;
-        if (response.length == 0) {
-          // render not found template
+    this.employeeService
+      .getEmployeesByNameContaining(this.userId!, substring)
+      .subscribe(
+        (response: Employee[]) => {
+          this.employees = response;
+          if (response.length == 0) {
+            // render not found template
+          }
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
         }
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-
-      }
-    )
-
+      );
   }
-
 
   public getEmployeesByJobTitle(jobTitle: string) {
-    this.employeeService.getEmployeesByJobTitle(this.userId!, jobTitle).subscribe(
-      (response: Employee[]) => {
-        this.employees = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+    this.employeeService
+      .getEmployeesByJobTitle(this.userId!, jobTitle)
+      .subscribe(
+        (response: Employee[]) => {
+          this.employees = response;
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        }
+      );
   }
   public onDelete(employee: Employee) {
-    if (confirm("Are you sure you want to delete " + employee.name)) {
+    if (confirm('Are you sure you want to delete ' + employee.name)) {
       this.employeeService.deleteEmployee(this.userId!, employee.id).subscribe(
         (response: Employee[]) => {
           this.getEmployees();
@@ -103,9 +101,8 @@ export class EmployeesComponent implements OnInit {
         (error: HttpErrorResponse) => {
           alert(error.message);
         }
-      )
+      );
     }
-
   }
 
   public getEmployees(): void {

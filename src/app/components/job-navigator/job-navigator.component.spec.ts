@@ -8,9 +8,8 @@ describe('JobNavigatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JobNavigatorComponent ]
-    })
-    .compileComponents();
+      declarations: [JobNavigatorComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

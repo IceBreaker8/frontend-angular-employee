@@ -63,3 +63,6 @@ https://stackoverflow.com/questions/30154461/aws-cloudfront-not-updating-on-upda
 
 https://www.youtube.com/watch?v=V8vR7rA0ubs
 
+## Configure Eslint for Unit Testing
+
+https://dev.to/dreiv/using-eslint-and-prettier-with-vscode-in-an-angular-project-42ib

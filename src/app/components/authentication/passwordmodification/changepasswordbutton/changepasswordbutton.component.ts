@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./changepasswordbutton.component.css']
 })
 export class ChangepasswordbuttonComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    // do nothing
   }
 
+  ngOnInit(): void {
+    // do nothing
+  }
 }

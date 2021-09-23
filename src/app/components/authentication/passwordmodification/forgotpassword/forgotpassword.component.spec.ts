@@ -13,8 +13,7 @@ describe('ForgotpasswordComponent', () => {
       imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [AmplifyService],
       declarations: [ForgotpasswordComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

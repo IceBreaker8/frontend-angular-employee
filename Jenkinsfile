@@ -7,7 +7,13 @@ pipeline {
       }
     }
 
-    stage('Unit Tests') {
+    stage('Lint'){
+      steps{
+        sh 'npm run lint'
+      }
+    }
+    
+    stage('Jasmine Unit Tests') {
       steps {
         sh 'npm run test-headless'
       }

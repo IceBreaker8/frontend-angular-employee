@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-button.component.css']
 })
 export class LoginButtonComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    // do nothing
   }
 
+  ngOnInit(): void {
+    // do nothing
+  }
 }

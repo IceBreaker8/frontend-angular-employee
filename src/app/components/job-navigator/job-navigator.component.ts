@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./job-navigator.component.css']
 })
 export class JobNavigatorComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    // do nothing
   }
 
+  ngOnInit(): void {
+    // do nothing
+  }
 }

@@ -13,8 +13,7 @@ describe('LoginMenuComponent', () => {
       imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [AmplifyService],
       declarations: [LoginMenuComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

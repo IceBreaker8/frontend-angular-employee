@@ -4,14 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthSessionService {
+  username = '';
+  password = '';
 
-
-  username: string = "";
-  password: string = "";
-
-  constructor() { }
-
-
+  constructor() {
+    //do nothing
+  }
 
   setUsername(username: string) {
     this.username = username;
@@ -25,5 +23,4 @@ export class AuthSessionService {
   getPassword() {
     return this.password;
   }
-
 }

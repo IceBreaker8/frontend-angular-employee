@@ -4,9 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 //AWS amplify cognito
-import Amplify from "aws-amplify";
+import Amplify from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
-import awsconfig from "../aws-exports";
+import awsconfig from '../aws-exports';
 import { AppComponent } from './app.component';
 import { LoginButtonComponent } from './components/authentication/login/login-button/login-button.component';
 import { LoginMenuComponent } from './components/authentication/login/login-menu/login-menu.component';
@@ -33,35 +33,76 @@ import { EmployeeService } from './services/employee.service';
 import { ProfileService } from './services/profile.service';
 import { UserService } from './services/user.service';
 
-
-
-
-
-
-
 Amplify.configure(awsconfig);
-
 
 // @TODO: MAKE SEARCH BAR UNFUNCTIONAL OUTSIDE OF EMPLOYEES COMPONENT
 const routes: Routes = [
-  { path: 'employee/update/:id', component: EmployeeFormComponent, canActivate: [AuthGuardGuard] },
-  { path: "employee/search/:subsname", component: EmployeesComponent, canActivate: [AuthGuardGuard] },
-  { path: 'employee/jobs/:jobTitle', component: EmployeesComponent, canActivate: [AuthGuardGuard] },
-  { path: 'employee/find/:id', component: EmployeeInfoComponent, canActivate: [AuthGuardGuard] },
-  { path: 'employee/add', component: EmployeeFormComponent, canActivate: [AuthGuardGuard] },
-  { path: 'employee', component: EmployeesComponent, canActivate: [AuthGuardGuard] },
+  {
+    path: 'employee/update/:id',
+    component: EmployeeFormComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'employee/search/:subsname',
+    component: EmployeesComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'employee/jobs/:jobTitle',
+    component: EmployeesComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'employee/find/:id',
+    component: EmployeeInfoComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'employee/add',
+    component: EmployeeFormComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'employee',
+    component: EmployeesComponent,
+    canActivate: [AuthGuardGuard]
+  },
   //home
   { path: 'home', component: HomeComponent },
   //authentication routes
-  { path: 'login', component: LoginMenuComponent, canActivate: [AuthGuardGuard] },
-  { path: "signup", component: SignupComponent, canActivate: [AuthGuardGuard] },
-  { path: "confirm-signup", component: LoginconfirmationComponent, canActivate: [AuthGuardGuard] },
-  { path: "forgot-password", component: ForgotpasswordComponent, canActivate: [AuthGuardGuard] },
-  { path: "reset-password", component: ResetpasswordComponent, canActivate: [AuthGuardGuard] },
-  { path: "change-password", component: ChangepasswordComponent, canActivate: [AuthGuardGuard] },
+  {
+    path: 'login',
+    component: LoginMenuComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuardGuard] },
+  {
+    path: 'confirm-signup',
+    component: LoginconfirmationComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotpasswordComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'reset-password',
+    component: ResetpasswordComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  {
+    path: 'change-password',
+    component: ChangepasswordComponent,
+    canActivate: [AuthGuardGuard]
+  },
   //profile routes
-  { path: "profile", component: ProfileComponent, canActivate: [AuthGuardGuard] },
-  { path: '**', redirectTo: "home", pathMatch: "full" }
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardGuard]
+  },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -88,14 +129,18 @@ const routes: Routes = [
     HomeComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      routes
-    ),
+    RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [EmployeeService, AmplifyService, UserService, ProfileService, AuthGuardGuard],
+  providers: [
+    EmployeeService,
+    AmplifyService,
+    UserService,
+    ProfileService,
+    AuthGuardGuard
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

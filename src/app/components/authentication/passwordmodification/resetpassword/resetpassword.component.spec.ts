@@ -13,8 +13,7 @@ describe('ResetpasswordComponent', () => {
       imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [AmplifyService],
       declarations: [ResetpasswordComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -26,7 +25,4 @@ describe('ResetpasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });
-
-

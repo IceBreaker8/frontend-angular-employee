@@ -27,17 +27,14 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/employeeamangerapp'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reporters: [{ type: 'html' }, { type: 'text-summary' }]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome','ChromeHeadless'],
+    browsers: ['Chrome', 'ChromeHeadless'],
     customLaunchers: {
       ChromeHeadless: {
         base: 'Chrome',
@@ -45,8 +42,8 @@ module.exports = function (config) {
           '--headless',
           '--disable-gpu',
           // Without a remote debugging port, Google Chrome exits immediately.
-          '--remote-debugging-port=9222',
-        ],
+          '--remote-debugging-port=9222'
+        ]
       }
     },
     singleRun: true,
