@@ -16,7 +16,7 @@ export class LoginMenuComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private authSession: AuthSessionService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -34,7 +34,7 @@ export class LoginMenuComponent implements OnInit {
           this.route.navigate(['/employee']);
         })
         .catch((error) => {
-          // console.log(error.message);
+          alert(error.message);
         });
     } catch (error) {
       alert(error.message);
