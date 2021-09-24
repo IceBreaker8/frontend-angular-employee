@@ -63,8 +63,12 @@ https://stackoverflow.com/questions/30154461/aws-cloudfront-not-updating-on-upda
 
 https://www.youtube.com/watch?v=V8vR7rA0ubs
 
+# ANGULAR TESTING
 ## Configure Eslint for Unit Testing
 
 https://eslint.org/docs/user-guide/getting-started
 
 `> npx eslint src/app`
+
+Here are the Eslint rules (warnings):
+https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules
