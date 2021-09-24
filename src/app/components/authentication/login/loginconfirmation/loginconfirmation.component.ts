@@ -49,7 +49,7 @@ export class LoginconfirmationComponent implements OnInit {
     this.confirmSignUp(username, confirmationCode);
   }
 
-  async confirmSignUp(username: string, code: string): void {
+  async confirmSignUp(username: string, code: string): Promise<void> {
     try {
       await Auth.confirmSignUp(username, code).catch((error) => {
         console.log(error.message);
@@ -65,7 +65,7 @@ export class LoginconfirmationComponent implements OnInit {
     }
   }
 
-  async loginUser(username: string, password: string): void {
+  async loginUser(username: string, password: string): Promise<void> {
     try {
       const user = await Auth.signIn(username, password)
         .then((user) => {
@@ -81,7 +81,7 @@ export class LoginconfirmationComponent implements OnInit {
     }
   }
 
-  async resendConfirmationCode(): void {
+  async resendConfirmationCode(): Promise<void> {
     const username = this.myForm.get('name')?.value;
     try {
       await Auth.resendSignUp(username).catch((err) => {

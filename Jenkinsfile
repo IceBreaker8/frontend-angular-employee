@@ -9,7 +9,7 @@ pipeline {
 
     stage('Eslint'){
       steps{
-        sh 'npx eslint src/app'
+        sh 'npm run lint'
       }
     }
     
