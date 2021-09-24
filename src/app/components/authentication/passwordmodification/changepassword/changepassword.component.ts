@@ -11,7 +11,7 @@ import { Auth } from 'aws-amplify';
 export class ChangepasswordComponent implements OnInit {
   myForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private route: Router) {}
+  constructor(private fb: FormBuilder, private route: Router) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -19,7 +19,7 @@ export class ChangepasswordComponent implements OnInit {
       newPassword: ['', [Validators.required]]
     });
   }
-  async login(username: string, password: string) {
+  async login(username: string, password: string): Promise<void> {
     try {
       const user = await Auth.signIn(username, password)
         .then((user) => {
@@ -33,7 +33,7 @@ export class ChangepasswordComponent implements OnInit {
     }
   }
 
-  async onSubmit() {
+  async onSubmit(): Promise<void> {
     const oldPassword = this.myForm.get('oldPassword')?.value;
     const newPassword = this.myForm.get('newPassword')?.value;
     Auth.currentAuthenticatedUser()

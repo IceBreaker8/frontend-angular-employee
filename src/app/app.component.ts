@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor() {
     // do nothing
   }
-  ngOnInit() {
+  ngOnInit(): void {
     // do nothing
   }
 }

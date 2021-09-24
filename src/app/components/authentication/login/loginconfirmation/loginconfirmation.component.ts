@@ -18,9 +18,9 @@ export class LoginconfirmationComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private authSession: AuthSessionService
-  ) {}
+  ) { }
 
-  redirect() {
+  redirect(): void {
     this.route.navigate([''], { replaceUrl: true });
   }
 
@@ -43,13 +43,13 @@ export class LoginconfirmationComponent implements OnInit {
     this.myForm.controls['name'].disable();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const username = this.myForm.get('name')?.value;
     const confirmationCode = this.myForm.get('confirmationCode')?.value;
     this.confirmSignUp(username, confirmationCode);
   }
 
-  async confirmSignUp(username: string, code: string) {
+  async confirmSignUp(username: string, code: string): void {
     try {
       await Auth.confirmSignUp(username, code).catch((error) => {
         console.log(error.message);
@@ -65,7 +65,7 @@ export class LoginconfirmationComponent implements OnInit {
     }
   }
 
-  async loginUser(username: string, password: string) {
+  async loginUser(username: string, password: string): void {
     try {
       const user = await Auth.signIn(username, password)
         .then((user) => {
@@ -81,7 +81,7 @@ export class LoginconfirmationComponent implements OnInit {
     }
   }
 
-  async resendConfirmationCode() {
+  async resendConfirmationCode(): void {
     const username = this.myForm.get('name')?.value;
     try {
       await Auth.resendSignUp(username).catch((err) => {

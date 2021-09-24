@@ -11,16 +11,16 @@ export class AuthSessionService {
     //do nothing
   }
 
-  setUsername(username: string) {
+  setUsername(username: string): void {
     this.username = username;
   }
-  setPassword(password: string) {
+  setPassword(password: string): void {
     this.password = password;
   }
-  getUsername() {
+  getUsername(): string {
     return this.username;
   }
-  getPassword() {
+  getPassword(): string {
     return this.password;
   }
 }

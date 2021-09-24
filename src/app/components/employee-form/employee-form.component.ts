@@ -136,7 +136,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   // submitting form
-  public onSubmit() {
+  public onSubmit(): void {
     if (this.edit) {
       this.service
         .updateEmployee(

@@ -10,6 +10,10 @@
     "sourceType": "module" // Allows for the use of imports
   },
   "rules": {
-    "@typescript-eslint/no-var-requires": 0 // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-non-null-assertion" : 0,
+    "@typescript-eslint/no-explicit-any" : 0,
+    "@typescript-eslint/explicit-module-boundary-types":0
+    //"@typescript-eslint/no-unused-vars":0 // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
   }
 }

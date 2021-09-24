@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
   }
 
   //form handles
-  public initForm() {
+  public initForm(): void {
     this.myForm = this.fb.group({
       position: [
         this.profile?.position,
@@ -78,13 +78,13 @@ export class ProfileComponent implements OnInit {
   }
 
   //edit profile details
-  public toggleEditMode() {
+  public toggleEditMode(): void {
     this.editMode = !this.editMode;
     if (this.editMode) {
       this.initForm();
     }
   }
-  public confirm() {
+  public confirm(): void {
     this.profileService.updateProfile(this.email!, this.myForm.value).subscribe(
       (res: Profile) => {
         this.profile = res;
@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
     smallError: any,
     smallEmpty: any,
     divName: string
-  ) {
+  ): void {
     if (this.myForm.get(divName)?.invalid) {
       input.style.borderColor = 'red';
       if (this.myForm.get(divName)?.value?.length == 0) {
@@ -121,7 +121,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  public getEmployeesNumber() {
+  public getEmployeesNumber(): void {
     this.userService.getUserByEmail(this.email!).subscribe((res) => {
       this.empService.getEmployees(res.id!).subscribe((res) => {
         this.empCount = res.length;
@@ -131,7 +131,7 @@ export class ProfileComponent implements OnInit {
     });
   }
   array: any = { All: 0, Java: 0, Dart: 0, 'C++': 0, JavaScript: 0, Python: 0 };
-  public initJobCount() {
+  public initJobCount(): void {
     for (const key in this.array) {
       if (key == 'All') continue;
       this.getEmployeesByJob(key);
@@ -139,13 +139,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  public selectJob(sel: any) {
+  public selectJob(sel: any): void {
     const value = sel.options[sel.selectedIndex].text;
     //console.log(value);
     this.perJobNum = this.array[value];
   }
 
-  public sum(obj: any) {
+  public sum(obj: any): number {
     let sum = 0;
     for (const el in obj) {
       if (obj.hasOwnProperty(el)) {
@@ -154,7 +154,7 @@ export class ProfileComponent implements OnInit {
     }
     return sum;
   }
-  public getEmployeesByJob(selectedValue: any) {
+  public getEmployeesByJob(selectedValue: any): void {
     //console.log(selectedValue);
     this.userService.getUserByEmail(this.email!).subscribe((res) => {
       this.empService

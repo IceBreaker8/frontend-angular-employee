@@ -23,7 +23,7 @@ export class ForgotpasswordComponent implements OnInit {
       name: ['', [Validators.required]]
     });
   }
-  onSubmit() {
+  onSubmit(): void {
     Auth.forgotPassword(this.myForm.get('name')?.value)
       .then((data) => {
         const username = this.myForm.get('name')?.value;

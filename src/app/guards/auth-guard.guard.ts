@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  Router,
-  RouterStateSnapshot
+  Router
 } from '@angular/router';
 import { Auth } from 'aws-amplify';
 
@@ -21,8 +20,8 @@ export class AuthGuardGuard implements CanActivate {
 
   constructor(private route: Router) { }
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot
+    //,state: RouterStateSnapshot
   ): Promise<boolean> {
     const path = route.routeConfig?.path?.toString();
 

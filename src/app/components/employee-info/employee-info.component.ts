@@ -5,7 +5,6 @@ import { Auth } from 'aws-amplify';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { UserService } from 'src/app/services/user.service';
 import { Employee } from '../employee';
-import { User } from '../user';
 
 @Component({
   selector: 'app-employee-info',
@@ -17,7 +16,7 @@ export class EmployeeInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private service: EmployeeService,
     private userService: UserService
-  ) {}
+  ) { }
 
   employee!: Employee;
   userId?: number;

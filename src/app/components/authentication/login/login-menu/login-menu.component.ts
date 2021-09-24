@@ -27,7 +27,7 @@ export class LoginMenuComponent implements OnInit {
     });
   }
 
-  async onSubmit() {
+  async onSubmit(): Promise<void> {
     const username: string = this.myForm.get('name')?.value;
     const password: string = this.myForm.get('password')?.value;
     try {
@@ -58,7 +58,7 @@ export class LoginMenuComponent implements OnInit {
     smallError: any,
     smallEmpty: any,
     divName: string
-  ) {
+  ): void {
     if (this.myForm.get(divName)?.invalid) {
       input.style.borderColor = 'red';
       if (this.myForm.get(divName)?.value?.length == 0) {

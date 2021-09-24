@@ -14,7 +14,7 @@ export class EmployeeService {
   public getEdit(): boolean {
     return this.edit;
   }
-  public setEdit(value: boolean) {
+  public setEdit(value: boolean): void {
     this.edit = value;
   }
   public getEmployeesByNameContaining(
