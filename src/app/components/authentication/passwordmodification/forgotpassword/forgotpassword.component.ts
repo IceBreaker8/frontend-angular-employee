@@ -16,7 +16,7 @@ export class ForgotpasswordComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private authSession: AuthSessionService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({

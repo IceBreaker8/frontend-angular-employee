@@ -3,8 +3,7 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot,
-  UrlTree
+  RouterStateSnapshot
 } from '@angular/router';
 import { Auth } from 'aws-amplify';
 
@@ -20,7 +19,7 @@ export class AuthGuardGuard implements CanActivate {
     'reset-password'
   ];
 
-  constructor(private route: Router) {}
+  constructor(private route: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

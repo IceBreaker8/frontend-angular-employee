@@ -16,7 +16,9 @@ export class LoginMenuComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private authSession: AuthSessionService
-  ) { }
+  ) {
+    // do nothing
+  }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({

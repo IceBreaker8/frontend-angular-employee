@@ -23,7 +23,7 @@ export class EmployeesComponent implements OnInit {
     private route: ActivatedRoute,
     public authSession: AuthSessionService,
     private userService: UserService
-  ) {}
+  ) { }
 
   jobTitle = '';
   subsname = '';

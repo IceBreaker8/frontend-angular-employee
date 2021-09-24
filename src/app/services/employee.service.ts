@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee } from '../components/employee';
 import { environment } from 'src/environments/environment';
+import { Employee } from '../components/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class EmployeeService {
   private apiServerUrl = environment.apiBaseUrl;
 
   edit!: boolean;
-  public getEdit() {
+  public getEdit(): boolean {
     return this.edit;
   }
   public setEdit(value: boolean) {
@@ -26,7 +26,7 @@ export class EmployeeService {
     );
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getEmployees(userId: number): Observable<Employee[]> {
     return this.http.get<Employee[]>(

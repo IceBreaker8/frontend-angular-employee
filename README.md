@@ -47,7 +47,7 @@ https://aws.amazon.com/cli/
 
 ## Configure AWS CLI
 
-`>aws configure`
+`> aws configure`
 
 ## Deploy to S3
 
@@ -65,4 +65,6 @@ https://www.youtube.com/watch?v=V8vR7rA0ubs
 
 ## Configure Eslint for Unit Testing
 
-https://dev.to/dreiv/using-eslint-and-prettier-with-vscode-in-an-angular-project-42ib
+https://eslint.org/docs/user-guide/getting-started
+
+`> npx eslint src/app`

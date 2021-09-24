@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
     private authSession: AuthSessionService,
     private userService: UserService,
     private profileService: ProfileService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({

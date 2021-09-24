@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private profileService: ProfileService
-  ) {}
+  ) { }
 
   myForm!: FormGroup;
 
